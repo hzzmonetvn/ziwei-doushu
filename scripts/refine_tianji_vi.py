@@ -213,11 +213,29 @@ def run(check_only: bool) -> None:
             "\n".join(json.dumps(row, ensure_ascii=False) for row in revised) + "\n",
             encoding="utf-8"
         )
+        previous: dict = json.loads(REPORT.read_text(encoding="utf-8")) if REPORT.exists() else {}
+        rounds = list(previous.get("refinement_rounds", []))
+        if not rounds and previous.get("quote_records_modified", 0):
+            rounds.append({
+                "phase": "Legacy terminology correction",
+                "quote_records_modified": previous["quote_records_modified"],
+                "terminology_replacements": previous.get("terminology_replacements", {}),
+            })
+        if changed_rows or counts:
+            rounds.append({
+                "phase": "Aligned glossary correction",
+                "quote_records_modified": changed_rows,
+                "terminology_replacements": dict(sorted(counts.items())),
+            })
+        totals: Counter = Counter()
+        for record in rounds:
+            totals.update(record.get("terminology_replacements", {}))
         REPORT.write_text(json.dumps({
             "method": "Aligned Chinese-source-gated glossary corrections",
             "source_records": len(source), "chapter_count": len(PARTS),
-            "quote_records_modified": changed_rows,
-            "terminology_replacements": dict(sorted(counts.items())),
+            "refinement_rounds": rounds,
+            "record_edit_events": sum(r.get("quote_records_modified", 0) for r in rounds),
+            "terminology_replacements_all_rounds": dict(sorted(totals.items())),
             "original_source_modified": False,
             "quality": "Machine translated; specialist human review still required",
         }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
