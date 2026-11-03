@@ -1,0 +1,13 @@
+{
+  "source": "lib/ziwei/cities.ts",
+  "provinces": 34,
+  "cities": 484,
+  "unique_location_keys": 517,
+  "mapped_labels": 517,
+  "newly_transcribed": 356,
+  "still_contains_han": 0,
+  "unconverted_examples": [],
+  "unknown_characters": {},
+  "method": "Manual Vietnamese exonyms + Unicode Unihan kVietnamese character readings",
+  "accuracy": "Names may require local editorial review; underlying longitude/source is unchanged"
+}

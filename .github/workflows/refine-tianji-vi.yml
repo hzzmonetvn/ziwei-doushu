@@ -1,0 +1,50 @@
+name: "Hiệu đính thuật ngữ bản dịch Thiên Kỷ"
+
+on:
+  push:
+    branches: [localization/vi-VN]
+    paths:
+      - scripts/refine_tianji_vi.py
+      - docs/tianji-ziwei/taxonomy-glossary.vi.json
+      - docs/tianji-ziwei/annotation-glossary.vi.json
+      - .github/workflows/refine-tianji-vi.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refine-tianji-vi
+  cancel-in-progress: false
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: localization/vi-VN
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: "Hiệu đính theo nguyên văn Hán tự"
+        run: python3 scripts/refine_tianji_vi.py
+      - name: "Xác minh đủ 1.848 đoạn, 16 chương và nguyên văn"
+        run: |
+          python3 scripts/refine_tianji_vi.py --check
+          python3 scripts/translate_tianji_vi.py --check
+      - name: "Commit bản dịch hiệu chỉnh"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/tianji-ziwei/entries.vi.jsonl docs/tianji-ziwei/vi/ docs/tianji-ziwei/refinement-report.vi.json
+          if git diff --cached --quiet; then
+            echo "Terminology data already current"
+          else
+            git commit -m "docs(vi): refine machine translations using aligned Tử Vi terminology"
+            git fetch origin localization/vi-VN
+            git rebase origin/localization/vi-VN
+            git push origin HEAD:localization/vi-VN
+          fi

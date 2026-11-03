@@ -1,0 +1,28 @@
+{
+  "source": "docs/tianji-ziwei/entries.jsonl",
+  "source_records": 1848,
+  "translated_records": 1848,
+  "unique_quotes": 1843,
+  "chapters": {
+    "2上": 180,
+    "3上": 143,
+    "4上": 130,
+    "5上": 145,
+    "6上": 149,
+    "7上": 144,
+    "8上": 134,
+    "9上": 138,
+    "10上": 138,
+    "11上": 118,
+    "12上": 106,
+    "13上": 91,
+    "14上": 96,
+    "15上": 96,
+    "19上_补充1": 29,
+    "24下_补充2": 11
+  },
+  "translator": "unofficial Google Translate GTX (machine translation)",
+  "quality": "Machine-translated and not reviewed by a Tử Vi / Chinese language expert",
+  "original_preserved": true,
+  "license": "CC BY-NC-SA 4.0"
+}

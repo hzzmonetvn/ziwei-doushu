@@ -46,7 +46,7 @@ export default function AnnouncementModal() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          // 不点击外部关闭——强制用户按"我知道了"按钮才能进入首页
+          // 不点击外部关闭——强制用户按"Đã hiểu"按钮才能进入首页
           style={{
             position: 'fixed', inset: 0, zIndex: 9999,
             background: 'rgba(20,12,2,0.88)',
@@ -88,11 +88,11 @@ export default function AnnouncementModal() {
                 A LETTER TO USERS
               </div>
               <h2 style={{ fontSize: '19px', fontWeight: 700, color: '#3d2f10', letterSpacing: '0.08em', margin: 0 }}>
-                致正在使用这个平台的你
+                Gửi tới những ai đang sử dụng nền tảng
               </h2>
               <button
                 onClick={close}
-                aria-label="关闭"
+                aria-label="Đóng"
                 style={{
                   position: 'absolute', top: '14px', right: '16px',
                   width: '28px', height: '28px',
@@ -117,12 +117,12 @@ export default function AnnouncementModal() {
               textAlign: 'center',
             }}>
               <div style={{ fontSize: '10px', letterSpacing: '0.3em', color: '#c45a2d', marginBottom: '4px', fontWeight: 600 }}>
-                LIMITED TIME · 限时回馈
+                THÔNG BÁO · ƯU ĐÃI CÓ THỜI HẠN
               </div>
               <div style={{ fontSize: '14px', color: '#8b3a1a', fontWeight: 600, lineHeight: 1.6 }}>
-                <span style={{ fontSize: '16px', color: '#c45a2d', fontWeight: 700 }}>5 月 1 日 — 5 月 8 日</span>
+                <span style={{ fontSize: '16px', color: '#c45a2d', fontWeight: 700 }}>Từ ngày 1 đến ngày 8 tháng 5</span>
                 <br />
-                平台全部功能 + AI 提问 全部免费开放
+                Mở miễn phí toàn bộ tính năng và câu hỏi AI
               </div>
             </div>
 
@@ -136,13 +136,13 @@ export default function AnnouncementModal() {
               flex: 1,
             }}>
               <p style={{ margin: '0 0 12px' }}>
-                说实话，我真的没想到会有这么大的流量。
+                Tôi thực sự không ngờ nền tảng nhận được nhiều lượt truy cập đến vậy.
               </p>
               <p style={{ margin: '0 0 12px' }}>
-                最开始做这个平台，我的初心其实很简单：在 AI 时代，把倪师这套原本复杂、门槛很高的体系，尽量做得更简单、更高效、更容易理解。
+                Khi bắt đầu xây dựng nền tảng này, mong muốn của tôi rất đơn giản: trong thời đại AI, giúp phương pháp Nghê Hải Hạ vốn phức tạp trở nên dễ tiếp cận, hiệu quả và dễ hiểu hơn.
               </p>
               <p style={{ margin: '0 0 12px' }}>
-                不一定每个人都要先学很久、看很多书，才能接触这些内容。我们希望通过这个平台，让大家用更轻松的方式，获得一些对自我、人生阶段、选择方向的参考和启发。
+                Không phải ai cũng cần nghiên cứu nhiều năm hoặc đọc vô số sách mới có thể tiếp cận Tử Vi. Chúng tôi mong nền tảng này giúp mọi người tham khảo và suy ngẫm về bản thân, những giai đoạn cuộc đời và các lựa chọn của mình.
               </p>
               <p style={{
                 margin: '0 0 12px',
@@ -153,22 +153,22 @@ export default function AnnouncementModal() {
                 fontStyle: 'italic',
                 color: '#7a5e2a',
               }}>
-                倪师曾说过一句话：人怎么可能发明出完全没有用的东西呢？
+                Thầy Nghê từng nói đại ý: Làm sao con người có thể phát minh ra thứ hoàn toàn vô ích?
               </p>
               <p style={{ margin: '0 0 12px' }}>
-                我一直觉得，易经如此，紫微斗数也是如此。它们真正有价值的地方，不是让人被某个结果困住，而是让我们更早看见自己的性格惯性、人生课题和选择方向。看见之后，才有机会调整；理解之后，才有机会变得更好。
+                Theo tôi, Kinh Dịch hay Tử Vi Đẩu Số đều có thể là phương tiện suy ngẫm. Giá trị của chúng không nằm ở việc bị ràng buộc bởi một kết quả luận đoán, mà ở khả năng nhìn lại tính cách, những vấn đề gặp phải và hướng lựa chọn. Hiểu bản thân là bước đầu tiên để thay đổi.
               </p>
               <p style={{ margin: '0 0 12px' }}>
-                至于那些说&ldquo;你当下在看这些，其实也是命运的一部分&rdquo;之类的话，我就不多评价了。
+                Còn câu “ngay lúc này bạn đọc những điều này cũng là một phần của vận mệnh”, tôi xin không bình luận thêm.
               </p>
               <p style={{ margin: '0 0 12px' }}>
-                这几天账号被小红书抬走了，<strong style={{ color: '#c45a2d' }}>5 月 3 号开始恢复正常更新。</strong>
+                Mấy ngày qua tài khoản Xiaohongshu đã bị khóa, <strong style={{ color: '#c45a2d' }}>dự kiến cập nhật bình thường trở lại từ ngày 3 tháng 5.</strong>
               </p>
               <p style={{ margin: '0 0 16px', color: '#3d2f10', fontWeight: 500 }}>
-                最后，真心祝愿大家都能越来越了解自己，越来越爱自己，也越来越有能力爱身边的人。
+                Cuối cùng, tôi chân thành chúc mọi người ngày càng hiểu, yêu thương bản thân và những người xung quanh.
               </p>
               <p style={{ margin: 0, textAlign: 'right', fontSize: '13px', color: '#7a5e2a' }}>
-                ——谢谢大家 🙏
+                — Xin cảm ơn mọi người 🙏
               </p>
             </div>
 
@@ -197,7 +197,7 @@ export default function AnnouncementModal() {
                   boxShadow: '0 4px 12px rgba(184,146,42,0.3)',
                 }}
               >
-                我知道了
+                Đã hiểu
               </button>
             </div>
           </motion.div>

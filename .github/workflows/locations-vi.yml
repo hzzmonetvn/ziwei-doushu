@@ -1,0 +1,46 @@
+name: "Chuẩn hóa Hán–Việt địa danh"
+
+on:
+  push:
+    branches: [localization/vi-VN]
+    paths:
+      - .github/workflows/locations-vi.yml
+      - scripts/generate_location_vi.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: locations-vi
+  cancel-in-progress: false
+
+jobs:
+  locations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: localization/vi-VN
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: "Đọc Unihan và phiên âm Hán–Việt toàn bộ danh sách địa điểm"
+        run: |
+          python3 scripts/generate_location_vi.py
+          python3 scripts/generate_location_vi.py --check
+      - name: "Ghi bản đồ nhãn tiếng Việt vào nhánh"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lib/i18n/china-locations-vi.ts lib/i18n/china-locations-coverage.vi.json
+          if git diff --cached --quiet; then
+            echo "Already fully labeled"
+          else
+            git commit -m "i18n(vi): transcribe source location names with Unihan kVietnamese"
+            git fetch origin localization/vi-VN
+            git rebase origin/localization/vi-VN
+            git push origin HEAD:localization/vi-VN
+          fi

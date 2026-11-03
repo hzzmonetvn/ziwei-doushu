@@ -1,28 +1,28 @@
-name: 正式站问题 / ouranic.cn issue
-description: 线上网站（ouranic.cn）登录、支付、显示等问题
+name: Vấn đề trên website OURANIC
+description: Các vấn đề đăng nhập, thanh toán, hiển thị trên ouranic.cn.
 labels: ["bug"]
 body:
   - type: input
     id: url
     attributes:
-      label: 出问题的页面地址
-      placeholder: https://ouranic.cn/……
+      label: URL trang gặp lỗi
+      placeholder: "https://ouranic.cn/..."
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: 怎么出现的
-      placeholder: 点了什么、填了什么、看到什么报错
+      label: Các bước dẫn đến lỗi
+      placeholder: "Bạn đã nhấp gì, điền gì và nhận thông báo nào?"
     validations:
       required: true
   - type: input
     id: env
     attributes:
-      label: 浏览器与系统
-      placeholder: 例：Windows 11 / Chrome 153 / 公司网络开了代理
+      label: Trình duyệt và hệ điều hành
+      placeholder: "Ví dụ: Windows 11 / Chrome 153 / có sử dụng proxy"
   - type: textarea
     id: screenshot
     attributes:
-      label: 截图
-      description: 请勿贴出手机号、验证码、他人的生辰等隐私信息。
+      label: Ảnh chụp
+      description: "Không đăng số điện thoại, mã OTP hoặc thông tin sinh của người khác."

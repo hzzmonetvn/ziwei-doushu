@@ -27,6 +27,8 @@ export interface NiModule {
   references: string[];
   /** 核心概念/关键词 */
   keywords: string[];
+  /** Từ khóa gốc Hán tự dùng khi cần tra cứu song ngữ. */
+  keywordsOriginal?: string[];
   /** 图标字符 */
   icon: string;
   /** 状态 */
@@ -55,6 +57,11 @@ export interface NiChapter {
 
 /** 易经六十四卦 */
 export interface Hexagram {
+  nameVi?: string;
+  compositionVi?: string;
+  meaningVi?: string;
+  niInterpretationVi?: string;
+  divinationVi?: string;
   number: number;
   name: string;
   /** 卦象描述 如「天泽履」 */
@@ -93,6 +100,10 @@ export interface MedicalEntry {
 
 /** 针灸经验穴位 */
 export interface AcuExperience {
+  /** Diễn giải tiếng Việt; dữ liệu gốc giữ nguyên để đối chiếu. */
+  conditionVi?: string;
+  acupointsVi?: string;
+  categoryVi?: string;
   id: number;
   /** 适应症/疾病 */
   condition: string;
@@ -106,6 +117,10 @@ export interface AcuExperience {
 
 /** 透针透穴法 */
 export interface TransNeedling {
+  comboVi?: string;
+  indicationVi?: string;
+  supportingVi?: string;
+  sourceVi?: string;
   id: number;
   /** 透穴组合：A透B */
   combo: string;
@@ -119,6 +134,10 @@ export interface TransNeedling {
 
 /** 汉唐方剂 */
 export interface HantangFormula {
+  nameVi?: string;
+  indicationVi?: string;
+  theoryVi?: string;
+  ingredientsVi?: string;
   id: number;
   /** 方名（如「白带丸」、「大禹丸」） */
   name: string;
@@ -132,6 +151,10 @@ export interface HantangFormula {
 
 /** 经典经方 */
 export interface ClassicFormula {
+  nameVi?: string;
+  compositionVi?: string;
+  indicationVi?: string;
+  niUsageVi?: string;
   id: string;
   /** 方名 */
   name: string;

@@ -9,9 +9,11 @@ export interface FamousPerson {
   id: string;
   name: string;
   nameEn: string;
+  nameOriginal?: string; // Tên Hán tự để đối chiếu nguồn
   category: '商业' | '文艺' | '历史' | '体育' | '科技';
   description: string;           // 一句话身份介绍
   descriptionEn: string;
+  descriptionOriginal?: string; // Nguyên văn giới thiệu
   year: number;
   month: number;
   day: number;
@@ -19,146 +21,158 @@ export interface FamousPerson {
   gender: 'male' | 'female';
   notable: string;               // 命盘亮点提示（启发用户兴趣）
   notableEn: string;
+  notableOriginal?: string; // Nguyên văn bình luận
 }
 
 export const FAMOUS_PERSONS: FamousPerson[] = [
-  // ─── 商业传奇 ─────────────────────────────────────────────
+  // ─── Doanh nhân ─────────────────────────────────────────────
   {
     id: 'ma-yun',
-    name: '马云',
+    name: 'Mã Vân',
+    nameOriginal: "马云",
     nameEn: 'Jack Ma',
     category: '商业',
-    description: '阿里巴巴创始人',
+    description: 'Người sáng lập Alibaba',
     descriptionEn: 'Founder of Alibaba',
     year: 1964, month: 9, day: 10, hour: 5,  // 约巳时
     gender: 'male',
-    notable: '命盘显示极强的破格重建之力，官禄宫星曜与互联网商业帝国高度对应',
+    notable: 'Theo cách luận Tử Vi truyền thống, lá số mẫu được dùng để bàn về khả năng đổi mới, tổ chức và phát triển công danh.',
     notableEn: 'The chart shows an exceptional ability to break established patterns and rebuild, while the Career Palace closely parallels the rise of an internet business empire.',
   },
   {
     id: 'li-jiacheng',
-    name: '李嘉诚',
+    name: 'Lý Gia Thành',
+    nameOriginal: "李嘉诚",
     nameEn: 'Li Ka-shing',
     category: '商业',
-    description: '香港超级富豪，长和系创始人',
+    description: 'Doanh nhân Hồng Kông, người sáng lập tập đoàn CK Hutchison',
     descriptionEn: 'Hong Kong billionaire and founder of the CK Hutchison business empire',
     year: 1928, month: 7, day: 29, hour: 3,  // 约卯时
     gender: 'male',
-    notable: '财帛宫四化是研究东方首富命盘的绝佳案例，禄存守财，越积越厚',
+    notable: 'Ví dụ nghiên cứu tài vận qua Tứ Hóa tại cung Tài Bạch và ý nghĩa Lộc Tồn trong việc tích lũy.',
     notableEn: 'The Four Transformations in the Wealth Palace make this a compelling case study of extraordinary wealth; Lu Cun preserves assets and supports steady accumulation.',
   },
   {
     id: 'ren-zhengfei',
-    name: '任正非',
+    name: 'Nhậm Chính Phi',
+    nameOriginal: "任正非",
     nameEn: 'Ren Zhengfei',
     category: '商业',
-    description: '华为创始人',
+    description: 'Người sáng lập Huawei',
     descriptionEn: 'Founder of Huawei',
     year: 1944, month: 10, day: 25, hour: 3, // 卯时
     gender: 'male',
-    notable: '七杀入命格局，一生逆风而行，越打压越强大，倪师七杀理论的活教材',
+    notable: 'Lá số mẫu có Thất Sát nhập Mệnh, dùng để tìm hiểu tính quyết đoán và năng lực vượt thử thách theo cổ thư.',
     notableEn: 'Qi Sha in the Life Palace points to a life strengthened by adversity—the greater the pressure, the stronger the response—making this a vivid case study of traditional Qi Sha theory.',
   },
 
-  // ─── 文艺名人 ─────────────────────────────────────────────
+  // ─── Nghệ thuật ─────────────────────────────────────────────
   {
     id: 'zhang-ailing',
-    name: '张爱玲',
+    name: 'Trương Ái Linh',
+    nameOriginal: "张爱玲",
     nameEn: 'Eileen Chang',
     category: '文艺',
-    description: '中国现代文学巨匠',
+    description: 'Nhà văn nổi tiếng của văn học Trung Quốc hiện đại',
     descriptionEn: 'A master of modern Chinese literature',
     year: 1920, month: 9, day: 30, hour: 1, // 丑时
     gender: 'female',
-    notable: '命盘孤独星曜组合与其传奇感情经历、文学成就形成神奇对照',
+    notable: 'Ví dụ tham khảo cách luận các tổ hợp sao cô độc, đối chiếu với tiểu sử văn học, không coi là quan hệ nhân quả.',
     notableEn: 'The chart’s combination of solitary stars forms a striking parallel with her celebrated romantic history and literary achievements.',
   },
   {
     id: 'jay-chou',
-    name: '周杰伦',
+    name: 'Châu Kiệt Luân',
+    nameOriginal: "周杰伦",
     nameEn: 'Jay Chou',
     category: '文艺',
-    description: '华语流行音乐天王',
+    description: 'Ca sĩ, nhạc sĩ nhạc Hoa ngữ nổi tiếng',
     descriptionEn: 'Mandopop singer-songwriter and cultural icon',
     year: 1979, month: 1, day: 18, hour: 1,  // 丑时（据报道夜间出生）
     gender: 'male',
-    notable: '文曲星与贪狼的组合，天生才艺之命，命盘解释了他为何能横跨音乐各风格',
+    notable: 'Tổ hợp Văn Khúc và Tham Lang được dùng để nghiên cứu cách luận về tài nghệ, giao tế và sáng tạo.',
     notableEn: 'The combination of Wen Qu and Tan Lang suggests natural artistic talent and helps explain his ability to move across musical styles.',
   },
   {
     id: 'wang-fei',
-    name: '王菲',
+    name: 'Vương Phi',
+    nameOriginal: "王菲",
     nameEn: 'Faye Wong',
     category: '文艺',
-    description: '华语乐坛最具传奇色彩的女歌手',
+    description: 'Nữ ca sĩ nổi tiếng trong làng nhạc Hoa ngữ',
     descriptionEn: 'One of the most iconic singers in Chinese pop',
     year: 1969, month: 8, day: 8, hour: 4,   // 辰时
     gender: 'female',
-    notable: '夫妻宫星曜与其两段传奇婚姻高度对应，感情格局极具研究价值',
+    notable: 'Ví dụ dùng để tham khảo cách luận cung Phu Thê; không suy ra quan hệ hôn nhân thực tế từ lá số.',
     notableEn: 'The stars in the Marriage Palace closely parallel her two high-profile marriages, making the relationship pattern especially valuable for study.',
   },
   {
     id: 'lin-zhiling',
-    name: '林志玲',
+    name: 'Lâm Chí Linh',
+    nameOriginal: "林志玲",
     nameEn: 'Lin Chi-ling',
     category: '文艺',
-    description: '台湾名模、演员',
+    description: 'Người mẫu và diễn viên Đài Loan',
     descriptionEn: 'Taiwanese model and actress',
     year: 1974, month: 11, day: 29, hour: 5, // 巳时
     gender: 'female',
-    notable: '太阴守命的女性美貌典范，命盘完美印证倪师"太阴入命女孩最漂亮"的论断',
+    notable: 'Thái Âm thủ Mệnh thường được liên hệ với tính âm nhu và thẩm mỹ trong cổ thư; không dùng sao để đánh giá ngoại hình thật.',
     notableEn: 'Tai Yin guarding the Life Palace is a classic symbol of feminine grace, closely echoing the traditional view that this placement bestows exceptional beauty.',
   },
 
-  // ─── 科技精英 ─────────────────────────────────────────────
+  // ─── Công nghệ ─────────────────────────────────────────────
   {
     id: 'steve-jobs',
-    name: '乔布斯',
+    name: 'Steve Jobs',
+    nameOriginal: "乔布斯",
     nameEn: 'Steve Jobs',
     category: '科技',
-    description: '苹果公司联合创始人',
+    description: 'Đồng sáng lập Apple',
     descriptionEn: 'Co-founder of Apple',
     year: 1955, month: 2, day: 24, hour: 6,  // 午时
     gender: 'male',
-    notable: '破军入命格局，被亲生父母遗弃又创建苹果帝国，破而后立的命盘典范',
+    notable: 'Phá Quân nhập Mệnh được dùng làm ví dụ nghiên cứu tính khai phá và thay đổi; các biến cố trong tiểu sử không phải do sao quyết định.',
     notableEn: 'Po Jun in the Life Palace, adoption at birth, and the creation of the Apple empire make this an archetypal chart of renewal after disruption.',
   },
   {
     id: 'elon-musk',
-    name: '马斯克',
+    name: 'Elon Musk',
+    nameOriginal: "马斯克",
     nameEn: 'Elon Musk',
     category: '科技',
-    description: '特斯拉、SpaceX创始人',
+    description: 'Doanh nhân công nghệ, sáng lập SpaceX và điều hành Tesla',
     descriptionEn: 'Founder of SpaceX and CEO of Tesla',
     year: 1971, month: 6, day: 28, hour: 4,  // 辰时（7:30AM 有文献记录）
     gender: 'male',
-    notable: '杀破狼格局的极致体现，命盘中驿马星旺盛，一生在改变人类未来边界',
+    notable: 'Lá số mẫu được dùng để tìm hiểu cách Sát Phá Tham và các sao chủ biến động, gắn với hoạt động đổi mới công nghệ.',
     notableEn: 'An intense expression of the Sha Po Lang pattern, with a powerful Travel Horse star and a life devoted to pushing the boundaries of humanity’s future.',
   },
 
-  // ─── 体育明星 ─────────────────────────────────────────────
+  // ─── Thể thao ─────────────────────────────────────────────
   {
     id: 'yao-ming',
-    name: '姚明',
+    name: 'Diêu Minh',
+    nameOriginal: "姚明",
     nameEn: 'Yao Ming',
     category: '体育',
-    description: 'NBA传奇中锋，中国篮球代言人',
+    description: 'Trung phong bóng rổ NBA, biểu tượng bóng rổ Trung Quốc',
     descriptionEn: 'Legendary NBA center and ambassador for Chinese basketball',
     year: 1980, month: 9, day: 12, hour: 5,  // 巳时
     gender: 'male',
-    notable: '天梁守命，高大威严，官禄宫星象与其职业成就高度吻合',
+    notable: 'Thiên Lương thủ Mệnh là ví dụ nghiên cứu tinh tính Ấm tinh và cung Quan Lộc, không dùng để dự đoán thành tích thể thao.',
     notableEn: 'Tian Liang guarding the Life Palace suggests stature and dignity, while the Career Palace closely aligns with his professional achievements.',
   },
   {
     id: 'li-na',
-    name: '李娜',
+    name: 'Lý Na',
+    nameOriginal: "李娜",
     nameEn: 'Li Na',
     category: '体育',
-    description: '中国网球大满贯得主',
+    description: 'Tay vợt Trung Quốc từng vô địch Grand Slam',
     descriptionEn: 'Chinese Grand Slam tennis champion',
     year: 1982, month: 2, day: 26, hour: 2,  // 寅时
     gender: 'female',
-    notable: '七杀化气，命中注定与人竞争，大限流年与法网夺冠时间点精准对应',
+    notable: 'Thất Sát được luận về tinh thần cạnh tranh; việc đối chiếu các kỳ Đại hạn, Lưu niên chỉ phục vụ tham khảo học thuật.',
     notableEn: 'Qi Sha channels a powerful competitive drive, while the major periods and annual cycles closely align with the timing of her French Open victory.',
   },
 ];

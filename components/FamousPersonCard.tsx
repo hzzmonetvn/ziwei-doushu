@@ -10,6 +10,11 @@ const CATEGORY_COLORS: Record<string, string> = {
   '历史': '#facc15',
 };
 
+const CATEGORY_LABELS: Record<string,string> = {
+  '商业': 'Doanh nhân', '文艺': 'Văn học – nghệ thuật',
+  '科技': 'Công nghệ', '体育': 'Thể thao', '历史': 'Lịch sử',
+};
+
 export default function FamousPersonCard({ person }: { person: FamousPerson }) {
   const catColor = CATEGORY_COLORS[person.category] ?? '#d4a843';
   return (
@@ -25,10 +30,10 @@ export default function FamousPersonCard({ person }: { person: FamousPerson }) {
     >
       <div className="text-[10px] tracking-widest mb-3 flex items-center gap-2" style={{ color: 'var(--t-faint)' }}>
         <span style={{ color: catColor, opacity: 0.9, fontSize: '12px' }}>★</span>
-        名人命盘
+        Lá số danh nhân
         <span className="text-[9px] px-2 py-0.5 rounded-full ml-auto"
           style={{ color: catColor, background: catColor + '18', border: `1px solid ${catColor}40` }}>
-          {person.category}
+          {CATEGORY_LABELS[person.category] ?? person.category}
         </span>
       </div>
 
@@ -38,7 +43,7 @@ export default function FamousPersonCard({ person }: { person: FamousPerson }) {
             {person.name}
           </span>
           <span className="text-[11px]" style={{ color: 'var(--t-faint)' }}>
-            {person.year}年 · {person.gender === 'male' ? '男命' : '女命'}
+            {person.year} · {person.gender === 'male' ? 'Nam mệnh' : 'Nữ mệnh'}
           </span>
         </div>
 
@@ -52,12 +57,12 @@ export default function FamousPersonCard({ person }: { person: FamousPerson }) {
             background: catColor + '0c',
             border: `1px solid ${catColor}25`,
           }}>
-          <span style={{ color: catColor, fontWeight: 600, marginRight: '4px' }}>命盘亮点：</span>
+          <span style={{ color: catColor, fontWeight: 600, marginRight: '4px' }}>Điểm nổi bật của lá số:</span>
           {person.notable}
         </div>
 
         <div className="text-[10px] mt-2" style={{ color: 'var(--t-faint)', opacity: 0.6, lineHeight: 1.5 }}>
-          ⚠️ 出生时辰为公开文献估算值，仅供研究参考。下方 AI 解读基于此命盘自动生成，与本人无关。
+          ⚠️ Giờ sinh được ước tính từ tài liệu công khai, chỉ phục vụ nghiên cứu. Phần luận giải AI được tạo tự động theo lá số, không phải phát ngôn của nhân vật.
         </div>
       </div>
     </motion.div>

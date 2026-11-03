@@ -6,6 +6,7 @@
  */
 
 import type { Book, Paragraph, SearchHit } from './types';
+import { VI_TEXT } from '@/lib/i18n/vi';
 import { guSuiFu } from './data/gusuifu';
 import { ziWeiQuanJi } from './data/quanji';
 import { ziWeiQuanShu } from './data/quanshu';
@@ -59,27 +60,46 @@ export function getParagraphById(id: string) {
  */
 export function searchClassics(query: string, limit = 30): SearchHit[] {
   const q = query.trim();
-  if (q.length < 1) return [];
+  if (!q) return [];
+
+  // Người dùng có thể tìm bằng tiếng Việt/Hán–Việt hoặc Hán tự.
+  // Các khóa dữ liệu cổ thư vẫn giữ nguyên để bảo đảm đối chiếu.
+  const normalize = (value: string) => value.normalize('NFC').toLocaleLowerCase('vi');
+  const normalizedQuery = normalize(q);
+  const matches = Array.from(new Set([
+    q,
+    ...Object.entries(VI_TEXT)
+      .filter(([, translated]) => normalize(translated) === normalizedQuery)
+      .map(([han]) => han),
+  ]));
 
   const hits: SearchHit[] = [];
   for (const book of ALL_BOOKS) {
     for (const chapter of book.chapters) {
       for (const p of chapter.paragraphs) {
-        const idx = p.text.indexOf(q);
-        if (idx < 0) continue;
+        // Ưu tiên trích đoạn tiếng Việt khi có bản dịch.
+        const candidates = [p.translation ?? '', p.text].filter(Boolean);
+        let chosen: { source: string; index: number; length: number } | null = null;
+        for (const source of candidates) {
+          for (const term of matches) {
+            const index = normalize(source).indexOf(normalize(term));
+            if (index >= 0) {
+              chosen = { source, index, length: term.length };
+              break;
+            }
+          }
+          if (chosen) break;
+        }
+        if (!chosen) continue;
 
-        // 提取上下文（前后各 40 字）
-        const start = Math.max(0, idx - 40);
-        const end = Math.min(p.text.length, idx + q.length + 40);
-        const before = p.text.slice(start, idx);
-        const matched = p.text.slice(idx, idx + q.length);
-        const after = p.text.slice(idx + q.length, end);
-
-        const snippet = (start > 0 ? '…' : '')
-          + escapeHtml(before)
-          + `<mark>${escapeHtml(matched)}</mark>`
-          + escapeHtml(after)
-          + (end < p.text.length ? '…' : '');
+        const { source, index, length } = chosen;
+        const beforeStart = Math.max(0, index - 50);
+        const afterEnd = Math.min(source.length, index + length + 50);
+        const snippet = (beforeStart ? '…' : '')
+          + escapeHtml(source.slice(beforeStart, index))
+          + '<mark>' + escapeHtml(source.slice(index, index + length)) + '</mark>'
+          + escapeHtml(source.slice(index + length, afterEnd))
+          + (afterEnd < source.length ? '…' : '');
 
         hits.push({
           bookSlug: book.slug,
@@ -87,9 +107,8 @@ export function searchClassics(query: string, limit = 30): SearchHit[] {
           chapterTitle: chapter.title,
           paragraphId: p.id,
           snippet,
-          text: p.text,
+          text: p.translation ?? p.text,
         });
-
         if (hits.length >= limit) return hits;
       }
     }

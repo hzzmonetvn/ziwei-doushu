@@ -8,22 +8,25 @@ on:
 
 jobs:
   check:
-    name: 类型检查 + 排盘回归
+    name: Kiểm tra kiểu dữ liệu và hồi quy lập lá số
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # 仓库已提交 package-lock.json：按锁定版本安装，并开 npm 缓存
+      # Repo có package-lock.json: cài theo phiên bản đã khóa và bật cache npm
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
 
-      - name: 安装依赖
+      - name: Cài đặt dependencies
         run: npm ci --no-audit --no-fund
 
-      - name: 类型检查
+      - name: Kiểm tra TypeScript
         run: npm run typecheck
 
-      - name: 排盘引擎回归
+      - name: Kiểm thử hồi quy bộ máy an sao
         run: npm test
+
+      - name: Kiểm tra Next.js production build
+        run: npm run build
