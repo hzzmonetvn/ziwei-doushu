@@ -35,33 +35,33 @@ const TOPICS = [
 const TOPIC_PROMPTS: Record<string, string> = {
   overview: `Hãy luận giải tổng quan mệnh cách bằng tiếng Việt, dùng thuật ngữ Tử Vi Hán–Việt theo bố cục sau:
 
-**【命格定性】**
+**【Tổng quan mệnh cách】**
 Tóm tắt cách cục chủ đạo và khí chất mệnh chủ trong một câu.
 
 **Luận giải chính tinh**
 Phân tích đặc điểm chính tinh thủ Mệnh theo các quan điểm được ghi nhận trong hệ thống Nghê Hải Hạ; không tạo trích dẫn giả.
 
-**【三方四正】**
+**【Tam phương tứ chính】**
 Phân tích Tam phương của cung Tài Bạch, Quan Lộc và Thiên Di, phối hợp toàn bộ cách cục.
 
-**【当前大限】**
+**【Đại hạn hiện tại】**
 Nhận định xu hướng Đại hạn hiện tại và các vấn đề cần lưu ý.
 
-**【优势与注意】**
+**【Ưu thế và lưu ý】**
 Ưu thế tiên thiên và những điều cần thận trọng.`,
 
   love: `Hãy luận giải vận tình duyên và hôn nhân bằng tiếng Việt theo bố cục sau:
 
-**【感情格局】**
+**【Tổng quan tình cảm】**
 Tóm tắt đặc điểm tình duyên của mệnh chủ.
 
-**【夫妻宫分析】**
+**【Phân tích cung Phu Thê】**
 Luận chính tinh, Tứ Hóa tại cung Phu Thê theo hệ thống Nghê Hải Hạ.
 
-**【三方联动】**
+**【Liên hệ Tam phương】**
 Phối hợp những cung liên quan đến tình cảm.
 
-**【当前大限感情运】**
+**【Tình cảm trong Đại hạn hiện tại】**
 Phân tích diễn biến tình cảm trong Đại hạn mười năm hiện tại.
 
 **Gợi ý ứng dụng thực tế**
@@ -69,64 +69,64 @@ Phân tích diễn biến tình cảm trong Đại hạn mười năm hiện t�
 
   career: `Hãy luận giải vận công danh, sự nghiệp bằng tiếng Việt theo bố cục sau:
 
-**【事业格局】**
+**【Tổng quan sự nghiệp】**
 Tóm tắt mệnh cách công danh, xu hướng làm công hay tự kinh doanh.
 
-**【官禄宫分析】**
+**【Phân tích cung Quan Lộc】**
 Luận chính tinh, Tứ Hóa tại cung Quan Lộc theo hệ thống Nghê Hải Hạ.
 
-**【财帛宫联动】**
+**【Liên hệ cung Tài Bạch】**
 Phối hợp cung Tài Bạch với Quan Lộc và nguồn thu nhập.
 
-**【当前大限事业运】**
+**【Sự nghiệp trong Đại hạn】**
 Phân tích xu hướng sự nghiệp trong Đại hạn hiện tại.
 
-**【实际建议】**
+**【Gợi ý thực tế】**
 Đề xuất các ngành nghề và định hướng phù hợp.`,
 
   wealth: `Hãy luận giải tài vận bằng tiếng Việt theo bố cục sau:
 
-**【财运格局】**
+**【Tổng quan tài vận】**
 Tóm tắt đặc điểm tài vận, nguồn thu chủ động hay thụ động.
 
-**【财帛宫分析】**
+**【Phân tích cung Tài Bạch】**
 Luận chính tinh và Tứ Hóa tại cung Tài Bạch, nguồn và dòng tiền.
 
-**【田宅宫（财库）】**
+**【Cung Điền Trạch và tích lũy】**
 Đánh giá khả năng tích lũy và cung Điền Trạch.
 
-**【当前大限财运】**
+**【Tài vận trong Đại hạn】**
 Nhận định xu hướng tài vận hiện tại và lưu ý.
 
-**【理财建议】**
+**【Gợi ý quản lý tài chính】**
 Đưa ra gợi ý quản lý tài chính thận trọng, không đưa khuyến nghị đầu tư chắc chắn.`,
 
   health: `Hãy luận các quan niệm truyền thống về sức khỏe bằng tiếng Việt, không chẩn đoán bệnh, theo bố cục sau:
 
-**【疾厄宫主星】**
+**【Chính tinh tại cung Tật Ách】**
 Luận các sao ở cung Tật Ách theo ý nghĩa truyền thống.
 
-**【主要风险】**
+**【Các vấn đề cần lưu ý】**
 Giải thích quan niệm Tý Ngọ lưu chú của Nghê Hải Hạ như một hệ thống tham khảo, không suy luận bệnh từ lá số.
 
-**【大限健康走势】**
+**【Sức khỏe và Đại hạn theo quan niệm truyền thống】**
 Nêu những lưu ý về sức khỏe tổng quát, không dự báo bệnh tật theo thời điểm.
 
-**【预防建议】**
+**【Gợi ý chăm sóc sức khỏe】**
 Đề xuất thói quen chăm sóc sức khỏe chung.`,
 
   personality: `Hãy luận giải tính cách theo Tử Vi bằng tiếng Việt, với bố cục sau:
 
-**【命宫主星性格】**
+**【Đặc điểm chính tinh tại Mệnh】**
 Nêu tính chất chính tinh cung Mệnh theo quan niệm Nghê Hải Hạ, không bịa nguyên văn trích dẫn.
 
-**【三方性格综合】**
+**【Phối hợp tính chất các cung】**
 Phối hợp Tài Bạch, Quan Lộc, Thiên Di để diễn giải tính cách.
 
-**【人际关系模式】**
+**【Quan hệ và giao tiếp】**
 Phong cách ứng xử và quan hệ xã hội.
 
-**【优势与人生课题】**
+**【Thế mạnh và bài học cuộc sống】**
 Điểm mạnh và những bài học có thể suy ngẫm.`,
 };
 
@@ -230,13 +230,13 @@ export default function InsightPanel({ chart, selectedPalace, selectedSiHua }: I
 **Đặc điểm cung**
 Ý nghĩa của ${palaceVi} và tổ hợp tinh diệu tại cung này.
 
-**【主星解读】**
+**【Luận giải chính tinh】**
 Luận chính tinh theo hệ thống Nghê Hải Hạ, chỉ dẫn các quan điểm có căn cứ.
 
 **Tác động của Tam phương tứ chính**
 Ảnh hưởng của Tam phương tứ chính đối với cung này.
 
-**【实际建议】**
+**【Gợi ý thực tế】**
 Gợi ý tham khảo dựa trên cấu trúc cung.`;
 
     sendMessage(prompt, true);
@@ -273,7 +273,7 @@ ${starVi} Hóa ${siHuaVi} đóng tại 【${palaceVi}】, luận sự ảnh hư�
 **Ảnh hưởng trong thời kỳ đang xét**
 Đối chiếu Hóa ${siHuaVi} trong thời kỳ ${viewLabel} đối với vận hạn gần đây.
 
-**【实际建议】**
+**【Gợi ý thực tế】**
 Gợi ý ứng xử cụ thể trên cơ sở Tứ Hóa.`;
 
     sendMessage(prompt, true);
