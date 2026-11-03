@@ -5,6 +5,7 @@ import type { BirthInfo } from '@/lib/ziwei/types';
 import { SHICHEN } from '@/lib/ziwei/constants';
 import { useTheme } from '@/components/ThemeProvider';
 import { PROVINCES } from '@/lib/ziwei/cities';
+import { locationNameVi } from '@/lib/i18n/china-locations-vi';
 import { formToBirthInfo, calcTrueSolarBranch } from '@/lib/ziwei/share';
 
 export interface BirthFormState {
@@ -284,7 +285,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
 
       {/* ── 出生地点 ── */}
       <div style={{ marginBottom: '16px' }}>
-        <label style={{ display: 'block', fontSize: '11px', color: labelClr, marginBottom: '6px', letterSpacing: '0.05em' }}>Nơi sinh (hiệu chỉnh giờ mặt trời thực)</label>
+        <label style={{ display: 'block', fontSize: '11px', color: labelClr, marginBottom: '6px', letterSpacing: '0.05em' }}>Nơi sinh (địa danh Trung Quốc, giờ UTC+8)</label>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
           <select
             value={form.province}
@@ -295,7 +296,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
           >
             <option value="">Tỉnh / thành phố</option>
             {PROVINCES.map(p => (
-              <option key={p.name} value={p.name}>{p.name}</option>
+              <option key={p.name} value={p.name}>{locationNameVi(p.name)}</option>
             ))}
           </select>
           <select
@@ -308,7 +309,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
           >
             <option value="">{form.province ? 'Thành phố' : 'Chọn tỉnh/thành trước'}</option>
             {cityList.map(c => (
-              <option key={c.name} value={c.name}>{c.name}</option>
+              <option key={c.name} value={c.name}>{locationNameVi(c.name)}</option>
             ))}
           </select>
         </div>
@@ -321,7 +322,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
               exit={{ opacity: 0 }}
               style={{ fontSize: '10px', color: isDark ? 'rgba(180,210,235,0.85)' : 'rgba(100,70,10,0.5)', marginTop: '5px' }}
             >
-              {form.city || '(Chọn thành phố)'} · Kinh độ {form.longitude.toFixed(1)}°E · Chênh lệch giờ {offsetMin > 0 ? '+' : ''}{offsetMin} phút
+              {form.city ? locationNameVi(form.city) : '(Chọn thành phố)'} · Kinh độ {form.longitude.toFixed(1)}°E · Chênh lệch giờ {offsetMin > 0 ? '+' : ''}{offsetMin} phút
             </motion.p>
           ) : (
             <motion.p
