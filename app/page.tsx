@@ -3,6 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import StarField from '@/components/StarField';
+import { VI_TEXT } from '@/lib/i18n/vi';
 import { useTheme, type Theme } from '@/components/ThemeProvider';
 import AnnouncementModal from '@/components/AnnouncementModal';
 
@@ -73,7 +74,7 @@ function ThemeToggle() {
           color: isDark ? 'rgba(212,180,100,0.85)' : 'rgba(110,72,8,0.8)',
           transition: 'color 0.35s ease',
         }}>
-        {isDark ? '暗色' : '亮色'}
+        {isDark ? 'Chế độ tối' : 'Chế độ sáng'}
       </span>
     </motion.button>
   );
@@ -330,7 +331,7 @@ function FeatureVisual({ index, colors: c }: { index: number; colors: ReturnType
                     background: sel === s ? `${c.goldLine}30` : 'transparent',
                     fontWeight: sel === s ? 600 : 400,
                   }}>
-                  {s}
+                  {VI_TEXT[s] ?? s}
                 </motion.button>
               ))}
             </div>
@@ -365,7 +366,7 @@ function FeatureVisual({ index, colors: c }: { index: number; colors: ReturnType
               className="rounded-xl p-4 mt-1.5"
               style={{ border: `1px solid ${c.goldLine}`, background: c.featureBg }}>
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="text-sm font-semibold" style={{ color: c.goldSolid }}>{sel}</span>
+                <span className="text-sm font-semibold" style={{ color: c.goldSolid }}>{VI_TEXT[sel ?? ''] ?? sel}</span>
                 <span className="text-[11px] px-2 py-0.5 rounded-full" style={{ color: c.tagText, border: `1px solid ${c.goldLine}` }}>{selInfo.attr}</span>
               </div>
               <p className="text-xs leading-relaxed" style={{ color: c.textSecond }}>{selInfo.brief}</p>
@@ -431,7 +432,7 @@ function FeatureVisual({ index, colors: c }: { index: number; colors: ReturnType
           </motion.div>
         ))}
         <div className="text-[9px] mt-2 tracking-wider text-center" style={{ color: c.textFaint }}>
-          自动识别 11 种经典格局
+          Tự động nhận diện 11 cách cục kinh điển
         </div>
       </div>
     );
@@ -486,7 +487,7 @@ export default function HomePage() {
         }}>
         <div className="text-[11px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] font-medium transition-colors duration-300 flex-shrink-0"
           style={{ color: c.goldSolid }}>
-          紫微命盘
+          Lá số Tử Vi
         </div>
         <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
           <ThemeToggle />
@@ -495,14 +496,14 @@ export default function HomePage() {
             onClick={() => router.push('/heming')}
             className="text-[11px] sm:text-xs px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full transition-all duration-300"
             style={{ border: `1px solid ${c.navBorder}`, color: c.textMuted }}>
-            合盘
+            Ghép lá số
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
             onClick={() => router.push('/chart')}
             className="text-[11px] sm:text-xs px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full transition-all duration-300"
             style={{ border: `1px solid ${c.goldLine}`, color: c.goldSolid }}>
-            立即起盘
+            Lập lá số ngay
           </motion.button>
         </div>
       </nav>
@@ -516,7 +517,7 @@ export default function HomePage() {
             className="flex items-center justify-center gap-3 mb-8">
             <div className="h-px w-12" style={{ background: `linear-gradient(to right, transparent, ${c.goldLine})` }} />
             <span className="text-[11px] tracking-[0.45em] transition-colors duration-300" style={{ color: c.tagText }}>
-              紫微斗数 · 倪海厦体系
+              Tử Vi Đẩu Số · Hệ thống Nghê Hải Hạ
             </span>
             <div className="h-px w-12" style={{ background: `linear-gradient(to left, transparent, ${c.goldLine})` }} />
           </motion.div>
@@ -531,7 +532,7 @@ export default function HomePage() {
                 fontSize: 'clamp(56px, 10vw, 124px)',
                 letterSpacing: '0.07em',
               }}>
-              紫微命盘
+              Lá số Tử Vi
             </h1>
           </motion.div>
 
@@ -539,19 +540,19 @@ export default function HomePage() {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="text-base md:text-lg tracking-[0.18em] mb-2"
             style={{ color: c.textSecond, fontWeight: 500 }}>
-            紫微为门 · 天地人为路 · 倪海厦为师
+            Tử Vi là cửa ngõ · Thiên Địa Nhân là con đường · Nghê Hải Hạ là người dẫn dắt
           </motion.p>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.55 }}
             className="text-xs md:text-sm tracking-[0.3em] mb-6"
             style={{ color: c.textMuted, opacity: 0.85 }}>
-            AI 答疑 · 知行合一
+            Hỏi đáp AI · Học đi đôi với hành
           </motion.p>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.65 }}
             className="text-sm max-w-xl mx-auto leading-relaxed mb-10"
             style={{ color: c.textMuted }}>
-            输入出生年月日时，生成专属紫微斗数命盘 — 后续Thiên Kỷ、Địa Kỷ、Nhân Kỷ学习模块陆续开放。
+            Nhập ngày giờ sinh để lập lá số Tử Vi. Các chuyên đề Thiên Kỷ, Địa Kỷ và Nhân Kỷ sẽ được mở rộng từng bước.
           </motion.p>
 
           {/* CTA */}
@@ -563,7 +564,7 @@ export default function HomePage() {
               onClick={() => router.push('/chart')}
               className="px-12 py-4 font-semibold text-base tracking-widest rounded-full"
               style={{ background: c.ctaBg, color: c.ctaText }}>
-              立即起盘
+              Lập lá số ngay
             </motion.button>
           </motion.div>
 
@@ -609,7 +610,7 @@ export default function HomePage() {
               <span> Ưu đãi có thời hạn</span>
             </div>
             <div style={{ fontSize: '13px', lineHeight: 1.7, color: '#8b3a1a', fontWeight: 500 }}>
-              全部功能 + AI 提问
+              Toàn bộ tính năng và hỏi đáp AI
               <strong style={{ color: '#c45a2d' }}> Hoàn toàn miễn phí</strong>
             </div>
           </div>
@@ -640,7 +641,7 @@ export default function HomePage() {
               <span> Ưu đãi có thời hạn</span>
             </div>
             <div style={{ fontSize: '12px', lineHeight: 1.7, color: '#8b3a1a', fontWeight: 500 }}>
-              全部功能 + AI <strong style={{ color: '#c45a2d' }}>Hoàn toàn miễn phí</strong>
+              Toàn bộ tính năng và AI <strong style={{ color: '#c45a2d' }}>Hoàn toàn miễn phí</strong>
             </div>
           </div>
         </motion.div>
@@ -666,7 +667,7 @@ export default function HomePage() {
             transition: 'background 0.4s ease',
           }} />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <span className="font-bold" style={{ fontSize: 'clamp(220px, 38vw, 460px)', color: 'rgba(212,168,67,0.012)', lineHeight: 1, fontFamily: 'serif' }}>命</span>
+          <span className="font-bold" style={{ fontSize: 'clamp(220px, 38vw, 460px)', color: 'rgba(212,168,67,0.012)', lineHeight: 1, fontFamily: 'serif' }}>M</span>
         </div>
         <FadeIn className="relative mx-auto text-center w-full" y={20}>
           <div className="flex items-center justify-center gap-4 mb-8">
@@ -692,7 +693,7 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.45 }}
               className={`grad-text ${theme === 'dark' ? 'grad-text-dark' : 'grad-text-light'} font-bold`}
               style={{ fontSize: 'clamp(24px, 3.4vw, 48px)', letterSpacing: '0.05em', lineHeight: 1.35 }}>
-              最终书写属于自己的人生剧本
+              Tự mình viết nên hành trình cuộc đời
             </motion.p>
           </div>
         </FadeIn>
@@ -712,10 +713,10 @@ export default function HomePage() {
             <div className="h-px w-12" style={{ background: `linear-gradient(to left, transparent, ${c.goldLine})` }} />
           </div>
           <div className="text-2xl lg:text-3xl font-bold mb-2 tracking-[0.15em]" style={{ color: c.textPrimary }}>
-            倪师方法论 · 渐次展开
+            Phương pháp Nghê Hải Hạ · Từng bước mở rộng
           </div>
           <div className="text-xs lg:text-sm tracking-[0.1em]" style={{ color: c.textMuted }}>
-            从紫微入门，逐步开放Thiên Kỷ / Địa Kỷ / Nhân Kỷ学习模块
+            Bắt đầu từ Tử Vi, từng bước mở các chuyên đề Thiên Kỷ, Địa Kỷ và Nhân Kỷ
           </div>
         </FadeIn>
 
@@ -883,19 +884,19 @@ export default function HomePage() {
               </div>
               <h2 className={`grad-text ${theme === 'dark' ? 'grad-text-dark' : 'grad-text-light'} font-bold mb-5 tracking-tight`}
                 style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}>
-                天 · 地 · 人
+                Thiên · Địa · Nhân
               </h2>
               <p className="max-w-2xl mx-auto text-sm leading-relaxed" style={{ color: c.textSecond }}>
-                倪海厦老师的核心命运观：命运从来不是人生的全部。<br />
-                他将影响人生的力量分为三个同等重要的维度。
+                Theo quan niệm của Nghê Hải Hạ, vận mệnh không phải toàn bộ cuộc đời.<br />
+                Ông chia những yếu tố ảnh hưởng cuộc sống thành ba phương diện quan trọng.
               </p>
             </div>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
             {[
-              { glyph: '天', label: 'Thiên mệnh', pct: '⅓', color: c.goldSolid, borderColor: c.goldLine, desc: 'Theo quan niệm Tử Vi, thời điểm sinh xác lập bố cục tinh diệu, cục Ngũ hành và cung Mệnh. Đây chỉ là một góc nhìn về cuộc sống, không quyết định toàn bộ số phận.', sub: 'Lá số · Tinh diệu · Ngũ hành' },
-              { glyph: '地', label: 'Địa lý và môi trường', pct: '⅓', color: 'rgba(96,165,250,0.9)', borderColor: 'rgba(96,165,250,0.3)', desc: 'Môi trường sống, địa lý, gia đình và điều kiện xã hội ảnh hưởng đến cơ hội của mỗi người; những người có lá số tương tự vẫn có thể trải qua cuộc sống rất khác nhau.', sub: 'Địa vực · Phong thủy · Môi trường' },
-              { glyph: '人', label: 'Nhân tâm và ý chí', pct: '⅓', color: 'rgba(100,216,139,0.9)', borderColor: 'rgba(100,216,139,0.3)', desc: 'Ý chí, thái độ, lựa chọn và hành động là những yếu tố mà mỗi người có thể chủ động thay đổi. Tìm hiểu lá số nên giúp suy ngẫm và phát triển bản thân, không phải thụ động chờ định mệnh.', sub: 'Ý chí · Lựa chọn · Hành động' },
+              { glyph: 'Thiên', label: 'Thiên mệnh', pct: '⅓', color: c.goldSolid, borderColor: c.goldLine, desc: 'Theo quan niệm Tử Vi, thời điểm sinh xác lập bố cục tinh diệu, cục Ngũ hành và cung Mệnh. Đây chỉ là một góc nhìn về cuộc sống, không quyết định toàn bộ số phận.', sub: 'Lá số · Tinh diệu · Ngũ hành' },
+              { glyph: 'Địa', label: 'Địa lý và môi trường', pct: '⅓', color: 'rgba(96,165,250,0.9)', borderColor: 'rgba(96,165,250,0.3)', desc: 'Môi trường sống, địa lý, gia đình và điều kiện xã hội ảnh hưởng đến cơ hội của mỗi người; những người có lá số tương tự vẫn có thể trải qua cuộc sống rất khác nhau.', sub: 'Địa vực · Phong thủy · Môi trường' },
+              { glyph: 'Nhân', label: 'Nhân tâm và ý chí', pct: '⅓', color: 'rgba(100,216,139,0.9)', borderColor: 'rgba(100,216,139,0.3)', desc: 'Ý chí, thái độ, lựa chọn và hành động là những yếu tố mà mỗi người có thể chủ động thay đổi. Tìm hiểu lá số nên giúp suy ngẫm và phát triển bản thân, không phải thụ động chờ định mệnh.', sub: 'Ý chí · Lựa chọn · Hành động' },
             ].map((item, i) => (
               <FadeIn key={item.glyph} delay={0.1 + i * 0.12}>
                 <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.1 }}
@@ -921,9 +922,9 @@ export default function HomePage() {
           <FadeIn delay={0.3}>
             <div className="mt-10 text-center">
               <p className="text-sm leading-relaxed" style={{ color: c.textSecond }}>
-                「命运不是人生的全部，加上地理位置和人念，才是。」
+                “Vận mệnh không phải tất cả. Cần xét cả môi trường địa lý và suy nghĩ của con người.” (dịch ý)
               </p>
-              <p className="mt-2 text-[10px] tracking-widest" style={{ color: c.tagText }}>— 倪海厦</p>
+              <p className="mt-2 text-[10px] tracking-widest" style={{ color: c.tagText }}>— Nghê Hải Hạ</p>
             </div>
           </FadeIn>
         </div>
@@ -942,11 +943,11 @@ export default function HomePage() {
               </div>
               <h2 className={`grad-text ${theme === 'dark' ? 'grad-text-dark' : 'grad-text-light'} font-bold mb-6 tracking-tight`}
                 style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}>
-                倪海厦老师
+                Thầy Nghê Hải Hạ
               </h2>
               <p className="max-w-2xl mx-auto leading-relaxed text-sm" style={{ color: c.textSecond }}>
-                当代华人圈最具影响力的中医与术数大家之一<br />
-                美国Học viện Trung y Hán Đường创办人 ·“Nhân Kỷ”“Thiên Kỷ”两大Hệ thống giảng dạy传世
+                Giảng viên Trung y và thuật số truyền thống được biết đến rộng rãi<br />
+                Sáng lập Học viện Trung y Hán Đường tại Hoa Kỳ; giảng dạy Nhân Kỷ và Thiên Kỷ
               </p>
             </div>
           </FadeIn>
@@ -958,7 +959,7 @@ export default function HomePage() {
                 {[
                   { label: 'Sinh năm', value: 'Năm 1954', sub: 'Đài Loan' },
                   { label: 'Qua đời', value: 'Năm 2012', sub: '31 tháng 1 · Hưởng thọ 58 tuổi' },
-                  { label: 'Truyền thừa', value: '紫微斗数', sub: 'Trung y Kinh phương · Kinh Dịch' },
+                  { label: 'Truyền thừa', value: 'Tử Vi Đẩu Số', sub: 'Trung y Kinh phương · Kinh Dịch' },
                 ].map(item => (
                   <div key={item.label} className="text-center rounded-xl px-4 py-3"
                     style={{ border: `1px solid ${c.niDivider}`, background: 'rgba(255,255,255,0.02)' }}>
@@ -972,37 +973,37 @@ export default function HomePage() {
               <div className="space-y-4 text-sm leading-relaxed max-w-3xl mx-auto" style={{ color: c.textSecond }}>
                 <p>
                   <strong style={{ color: c.goldSolid }}>Tiểu sử</strong>：
-                  倪海厦先生（1954–2012）出Sinh nămĐài Loan，早年师承多位中医名家，专研经方派（《伤寒论》Truyền thừa）。
-                  中年赴美行医，在美国创立<strong>Học viện Trung y Hán Đường</strong>，二十余年间系统传授中医与传统术数。
-                  2012 年 1 月 31 日因肝癌在Đài LoanQua đời，享年 58 岁。
+                  Nghê Hải Hạ (1954–2012) sinh tại Đài Loan, từng theo học nhiều thầy thuốc Trung y và nghiên cứu trường phái Kinh phương, đặc biệt là Thương Hàn Luận.
+                  Sau đó, ông sang Hoa Kỳ hành nghề y, thành lập <strong>Học viện Trung y Hán Đường</strong> và giảng dạy Trung y cùng thuật số truyền thống.
+                  Ông qua đời tại Đài Loan ngày 31/01/2012, hưởng thọ 58 tuổi (theo tiểu sử nguồn).
                 </p>
                 <p>
                   <strong style={{ color: c.goldSolid }}>Hệ thống giảng dạy</strong>：
-                  倪师将毕生所学整理为两大公开教学系列。
-                  <strong>“Nhân Kỷ”</strong>涵盖《针灸大成》《神农本草经》《黄帝内经》《伤寒论》《金匮要略》——
-                  这是「人之纪」，奠定中医学习的完整路径；
-                  <strong>“Thiên Kỷ”</strong>涵盖紫微斗数与《易经》——这是「天之纪」，是术数研究的体系化成果。
-                  两者相合，是倪师留给后世最完整的Truyền thừa。
+                  Ông hệ thống hóa các bài giảng thành hai chương trình công khai.
+                  <strong>Nhân Kỷ</strong> gồm Châm Cứu Đại Thành, Thần Nông Bản Thảo Kinh, Hoàng Đế Nội Kinh, Thương Hàn Luận và Kim Quỹ Yếu Lược —
+                  hình thành chương trình nghiên cứu hệ thống Trung y.
+                  <strong>Thiên Kỷ</strong> giới thiệu Tử Vi Đẩu Số và Kinh Dịch như một hệ thống nghiên cứu thuật số.
+                  Hai chương trình tạo nên phần quan trọng trong di sản giảng dạy của ông.
                 </p>
                 <p>
                   <strong style={{ color: c.goldSolid }}>Quan điểm Tử Vi</strong>：
-                  倪师在紫微斗数上明确属<strong>Nam phái Tam Hợp</strong>，主张「以命宫为本、以三方四正为用、以四化为纲」。
-                  他在《Thiên Kỷ》课程中明言：「<em>Phi Tinh (Tứ Hóa) quá phức tạp theo quan điểm của thầy Nghê; ưu tiên phương pháp giản dị.</em>」——
-                  这一立场将其与繁琐的飞星派清晰区分。
+                  Trong Tử Vi, Nghê Hải Hạ chú trọng <strong>Tam Hợp phái</strong>, xem cung Mệnh làm gốc, Tam phương tứ chính làm dụng và Tứ Hóa làm yếu tố luận giải.
+                  Trong Thiên Kỷ, ông đề xuất <em>ưu tiên cách tiếp cận đơn giản thay vì hệ Phi Tinh phức tạp</em>.
+                  Đây là điểm khác biệt trong cách giảng dạy.
                 </p>
                 <p>
                   <strong style={{ color: c.goldSolid }}>Quan điểm học thuật</strong>：
-                  倪师反对死记硬背口诀，强调「理解原理胜过背诵」「逻辑可复核胜过神秘玄学」。
-                  这种态度让紫微斗数从师徒密传的封闭体系，走向系统化、可验证、可学习的现代知识体系。
+                  Ông đề cao việc hiểu nguyên lý thay vì học thuộc khẩu quyết, chú trọng phương pháp có thể kiểm chứng.
+                  Cách trình bày này giúp người mới học tiếp cận Tử Vi có hệ thống hơn.
                 </p>
                 <p>
                   <strong style={{ color: c.goldSolid }}>Ảnh hưởng đương đại</strong>：
-                  倪师的讲课视频在 B 站、YouTube 与各大平台广泛流传，是新一代命理与中医爱好者公认的入门必修。
-                  他不仅是紫微斗数的Truyền thừa者，更是把传统命理与中医带入现代知识体系的关键人物之一。
+                  Các video giảng dạy của ông được chia sẻ rộng rãi trên Bilibili, YouTube và nhiều nền tảng khác.
+                  Ông được biết đến nhờ giới thiệu mệnh lý và Trung y truyền thống theo phương pháp giảng dạy có hệ thống.
                 </p>
                 <p style={{ fontSize: '11px', color: c.textMuted, fontStyle: 'italic', marginTop: '12px' }}>
-                  本平台所有解读基于倪师《Thiên Kỷ》公开教学讲义、《紫微斗数全书》明版、传统三合派古籍整理而成，
-                  仅作文化与个人成长参考。倪师本人与本平台无任何商业关联。
+                  Các nội dung luận giải được tổng hợp từ bài giảng Thiên Kỷ, Tử Vi Đẩu Số Toàn Thư và các tư liệu Tam Hợp phái,
+                  chỉ để tham khảo văn hóa và phát triển bản thân. Nền tảng không có quan hệ thương mại với ông hoặc người thừa kế.
                 </p>
               </div>
             </div>
@@ -1029,7 +1030,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ 合盘入口 ══════════════════════════════════════ */}
+      {/* ══ Ghép lá số入口 ══════════════════════════════════════ */}
       <section className="relative z-10 px-6 md:px-10 lg:px-14 py-20">
         <div className="mx-auto" style={{ maxWidth: '1280px' }}>
           <div className="rounded-2xl p-10 md:p-14 text-center"
@@ -1046,11 +1047,11 @@ export default function HomePage() {
               </div>
               <h2 className={`grad-text ${theme === 'dark' ? 'grad-text-dark' : 'grad-text-light'} font-bold mb-4 tracking-tight`}
                 style={{ fontSize: 'clamp(26px, 3.5vw, 40px)' }}>
-                紫微合盘
+                Ghép lá số Tử Vi
               </h2>
               <p className="text-sm leading-relaxed mb-8 max-w-lg mx-auto" style={{ color: c.textSecond }}>
-                输入两个人的出生信息，AI 基于倪海厦体系分析夫妻宫互参、命宫兼容性与三方四正交互，<br className="hidden md:block" />
-                给出感情匹配度、合伙可行性与最佳相处建议。
+                Nhập thông tin sinh của hai người để AI đối chiếu cung Phu Thê, cung Mệnh và Tam phương tứ chính theo hệ thống Nghê Hải Hạ.<br className="hidden md:block" />
+                Tham khảo sự hòa hợp tình cảm, khả năng hợp tác và cách ứng xử.
               </p>
               <div className="flex justify-center gap-3 flex-wrap mb-6">
                 {['Phân tích mức độ hòa hợp tình cảm', 'Đánh giá hợp tác kinh doanh', 'Luận giải quan hệ cha mẹ và con cái', 'Đánh giá hòa hợp trước hôn nhân'].map(item => (
@@ -1074,7 +1075,7 @@ export default function HomePage() {
                   color: c.goldSolid,
                   cursor: 'pointer',
                 }}>
-                开始合盘分析
+                Bắt đầu phân tích hai lá số
               </motion.button>
             </FadeIn>
           </div>
@@ -1087,18 +1088,18 @@ export default function HomePage() {
           <p className="text-[10px] tracking-[0.6em] uppercase mb-6" style={{ color: c.tagText }}>Bắt đầu hành trình tìm hiểu lá số</p>
           <h2 className={`grad-text ${theme === 'dark' ? 'grad-text-dark' : 'grad-text-light'} font-bold mb-8 tracking-tight leading-tight`}
             style={{ fontSize: 'clamp(32px, 5vw, 60px)' }}>
-            你的紫微命盘<br />等你解读
+            Lá số Tử Vi của bạn<br />đang chờ khám phá
           </h2>
           <p className="text-sm mb-10 max-w-md mx-auto leading-relaxed" style={{ color: c.textSecond }}>
-            输入出生年月日时，在几秒内生成你的专属命盘<br />
-            再由 AI 按倪海厦体系为你深度解读
+            Nhập ngày giờ sinh để lập lá số Tử Vi<br />
+            và tham khảo luận giải AI theo hệ thống Nghê Hải Hạ
           </p>
           <motion.button
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
             onClick={() => router.push('/chart')}
             className="px-14 py-4 font-semibold text-base tracking-widest rounded-full"
             style={{ background: c.ctaBg, color: c.ctaText }}>
-            免费起盘
+            Lập lá số miễn phí
           </motion.button>
           <div className="mt-4 flex flex-wrap gap-3 justify-center">
             <motion.a
@@ -1111,7 +1112,7 @@ export default function HomePage() {
                 background: 'transparent',
                 textDecoration: 'none',
               }}>
-              ✦ 紫微斗数知识库 →
+              ✦ Kho kiến thức Tử Vi Đẩu Số →
             </motion.a>
             <motion.a
               href="/library"
@@ -1123,7 +1124,7 @@ export default function HomePage() {
                 background: 'transparent',
                 textDecoration: 'none',
               }}>
-              📜 古籍原典库 →
+              📜 Thư viện cổ thư →
             </motion.a>
           </div>
         </FadeIn>
@@ -1137,7 +1138,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto mb-8">
           <div className="text-[9px] tracking-[0.3em] text-center mb-4 uppercase"
             style={{ color: c.textMuted, opacity: 0.6 }}>
-            倪师方法论 · 学术体系
+            Phương pháp Nghê Hải Hạ · Hệ thống học thuật
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             {SECTIONS.map(s => {
@@ -1162,7 +1163,7 @@ export default function HomePage() {
                   </div>
                   <div className="text-[9px] tracking-wider"
                     style={{ color: ready ? '#10b981' : c.textMuted }}>
-                    {ready ? '✓ Đã ra mắt' : `${s.when} 开放`}
+                    {ready ? '✓ Đã ra mắt' : `${s.when} ra mắt`}
                   </div>
                 </a>
               );
@@ -1172,12 +1173,12 @@ export default function HomePage() {
 
         <div className="text-center">
           <p className="text-[10px] tracking-wider mb-3" style={{ color: c.footerText }}>
-            紫微命盘 · 基于倪海厦正宗体系 · 仅供参考，命运掌握在自己手中
+            Lá số Tử Vi · Theo hệ thống Nghê Hải Hạ · Chỉ mang tính tham khảo
           </p>
           <p className="text-[10px] tracking-wider mb-3 max-w-2xl mx-auto leading-relaxed"
             style={{ color: c.footerText, opacity: 0.85 }}>
-            本平台基于中国传统文化研究，仅提供学习参考。<br className="sm:hidden" />
-            不构成任何医疗、投资、法律或重大决策建议。
+            Nền tảng nghiên cứu văn hóa truyền thống, chỉ phục vụ tham khảo.<br className="sm:hidden" />
+            Không phải lời khuyên y tế, đầu tư, pháp lý hoặc cơ sở quyết định quan trọng.
           </p>
           <p className="text-[10px] tracking-wider" style={{ color: c.footerText }}>
             <a href="/terms" style={{ color: c.footerText, textDecoration: 'underline' }}>Điều khoản dịch vụ</a>
