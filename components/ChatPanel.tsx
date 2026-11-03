@@ -203,7 +203,7 @@ export default function ChatPanel({ chart }: ChatPanelProps) {
               color: 'var(--t-gold)',
             }}
           >
-            解读
+            Luận giải
           </button>
         </div>
       </div>

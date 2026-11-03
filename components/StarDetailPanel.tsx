@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Star } from '@/lib/ziwei/types';
 import { STAR_DESCRIPTIONS } from '@/lib/ziwei/constants';
+import { VI_TEXT } from '@/lib/i18n/vi';
 
 interface StarDetailPanelProps {
   star: Star | null;
@@ -194,7 +195,7 @@ export default function StarDetailPanel({ star, palaceName, onClose }: StarDetai
           {/* 标题栏 */}
           <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: '1px solid var(--t-border)' }}>
             <div className="flex items-center gap-2">
-              <span className="text-xl font-bold" style={{ color: 'var(--t-gold)' }}>{star.name}</span>
+              <span className="text-xl font-bold" style={{ color: 'var(--t-gold)' }}>{VI_TEXT[star.name] ?? star.name}</span>
               {typeConfig && (
                 <span className={`text-[10px] px-1.5 py-0.5 rounded-full border ${typeConfig.color}`}>
                   {typeConfig.label}
@@ -202,7 +203,7 @@ export default function StarDetailPanel({ star, palaceName, onClose }: StarDetai
               )}
               {star.siHua && (
                 <span className={`text-[10px] px-1.5 py-0.5 rounded-full border font-medium ${siHuaColors[star.siHua] || ''}`}>
-                  化{star.siHua}
+                  Hóa {VI_TEXT[star.siHua] ?? star.siHua}
                 </span>
               )}
             </div>

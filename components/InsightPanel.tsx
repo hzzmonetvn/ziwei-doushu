@@ -219,7 +219,7 @@ export default function InsightPanel({ chart, selectedPalace, selectedSiHua }: I
 
     const majorStars = selectedPalace.stars.filter(s => s.type === 'major');
     const starDesc = majorStars.length > 0
-      ? majorStars.map(s => `${s.name}${s.siHua ? '化' + s.siHua : ''}`).join('、')
+      ? majorStars.map(s => `${s.name}${s.siHua ? ' Hóa ' + s.siHua : ''}`).join('、')
       : 'Vô chính diệu (mượn Đối cung)';
     const role = PALACE_ROLES[selectedPalace.name] ?? '';
 
@@ -251,8 +251,8 @@ Gợi ý tham khảo dựa trên cấu trúc cung.`;
     const palaceOfStar = chart.palaces.find(p =>
       p.stars.some(s => s.name === selectedSiHua.starName)
     );
-    const palaceName = palaceOfStar?.name ?? '未知宫位';
-    const viewLabel = selectedSiHua.view === 'daxian' ? '大限' : '流年';
+    const palaceName = palaceOfStar?.name ?? 'Chưa rõ cung';
+    const viewLabel = selectedSiHua.view === 'daxian' ? 'Đại hạn' : 'Lưu niên';
 
     const prompt = `Hãy luận bằng tiếng Việt ảnh hưởng Phi Hóa của 【${viewLabel} ${selectedSiHua.starName} Hóa ${selectedSiHua.siHua}】 theo bố cục:
 

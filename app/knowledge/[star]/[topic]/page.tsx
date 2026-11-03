@@ -13,6 +13,7 @@
  */
 
 import Link from 'next/link';
+import { VI_TEXT } from '@/lib/i18n/vi';
 import { notFound } from 'next/navigation';
 import type { TopicKey } from '@/lib/ziwei/db-analysis';
 import {
@@ -43,9 +44,9 @@ export async function generateMetadata({ params }: { params: Promise<{ star: str
   const data = getKnowledge(star, topic as TopicKey);
   if (!data.exists) return {};
 
-  const title = `${star}nhập cung ${data.palaceName} · ${data.topicLabel} · Luận giải theo hệ thống Nghê Hải Hạ`;
+  const title = `${VI_TEXT[star] ?? star} nhập ${VI_TEXT[data.palaceName] ?? data.palaceName} · ${data.topicLabel} · Luận giải theo Nghê Hải Hạ`;
   const description = data.parsed.dingdiao
-    || `${star}nhập cung ${data.palaceName}的Tử Vi Đẩu Số解读 — 基于Nghê Hải Hạ《天纪》体系与古籍《Tử Vi Đẩu Số Toàn Tập》《Cốt Tủy Phú》。`;
+    || `Luận giải ${VI_TEXT[star] ?? star} nhập ${VI_TEXT[data.palaceName] ?? data.palaceName} theo Thiên Kỷ và cổ thư Tử Vi Đẩu Số.`;
 
   return {
     title,
@@ -61,7 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ star: str
     },
     keywords: [
       'Tử Vi Đẩu Số', 'Nghê Hải Hạ', star, data.palaceName, data.topicLabel,
-      `${star}${data.palaceName}`, `${star}入${data.palaceName}`,
+      `${VI_TEXT[star] ?? star} ${VI_TEXT[data.palaceName] ?? data.palaceName}`,
       `Tử Vi Đẩu Số ${star}`, 'Nghê Hải HạTử Vi Đẩu Số', 'Tử Vi Đẩu Số Toàn Tập',
     ],
   };
@@ -94,7 +95,7 @@ export default async function KnowledgePage({ params }: { params: Promise<{ star
     datePublished: '2026-04-28',
     dateModified: '2026-04-28',
     mainEntityOfPage: `${SITE_URL}/knowledge/${slug}/${topic}`,
-    articleSection: 'Tử Vi Đẩu Số · Nghê Hải Hạ体系',
+    articleSection: 'Tử Vi Đẩu Số · Hệ thống Nghê Hải Hạ',
     keywords: [`Tử Vi Đẩu Số`, star, data.palaceName, data.topicLabel].join(', '),
   };
 
@@ -134,7 +135,7 @@ export default async function KnowledgePage({ params }: { params: Promise<{ star
             {data.topicLabel} · Luận giải theo hệ thống Nghê Hải Hạ
           </div>
           <h1 style={{ fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 700, color: 'var(--tx-0)', letterSpacing: '0.1em', lineHeight: 1.2 }}>
-            {star}nhập cung {data.palaceName}
+            {VI_TEXT[star] ?? star} nhập {VI_TEXT[data.palaceName] ?? data.palaceName}
           </h1>
           {STAR_BRIEF_SEO[star] && (
             <p style={{ fontSize: '13px', color: 'var(--tx-2)', marginTop: '14px', lineHeight: 1.8 }}>
@@ -234,7 +235,7 @@ export default async function KnowledgePage({ params }: { params: Promise<{ star
         </Section>
 
         {/* 内链：同 topic 其他主星 */}
-        <Section title={`其他主星nhập cung ${data.palaceName}的解读`} minimal>
+        <Section title={`Các chính tinh khác tại ${VI_TEXT[data.palaceName] ?? data.palaceName}`} minimal>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {otherStarsForTopic.slice(0, 13).map(s => (
               <Link
@@ -250,7 +251,7 @@ export default async function KnowledgePage({ params }: { params: Promise<{ star
                   textDecoration: 'none',
                 }}
               >
-                {s}入{data.palaceName}
+                {VI_TEXT[s] ?? s} nhập {VI_TEXT[data.palaceName] ?? data.palaceName}
               </Link>
             ))}
           </div>
@@ -277,7 +278,7 @@ export default async function KnowledgePage({ params }: { params: Promise<{ star
       {/* 页脚 */}
       <footer style={{ borderTop: '1px solid rgba(184,146,42,0.15)', padding: '20px 24px', textAlign: 'center', fontSize: '11px', color: 'var(--tx-3)', letterSpacing: '0.1em' }}>
         <div style={{ marginBottom: '6px' }}>Nghiên cứu Tử Vi · Theo hệ thống Nghê Hải Hạ · Chỉ phục vụ học tập, tham khảo</div>
-        <div style={{ opacity: 0.85 }}>本平台不构成任何医疗、投资、法律或重大决策建议</div>
+        <div style={{ opacity: 0.85 }}>Nội dung không thay thế tư vấn y tế, tài chính, pháp lý hay các quyết định quan trọng.</div>
       </footer>
     </div>
   );

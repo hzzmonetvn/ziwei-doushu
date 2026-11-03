@@ -8,7 +8,7 @@ interface ScrollIntroProps {
   skipLabel?: string;
 }
 
-const BEIDOU = ['天枢', '天璇', '天玑', '天权', '玉衡', '开阳', '摇光'];
+const BEIDOU = ['Thiên Xu', 'Thiên Tuyền', 'Thiên Cơ', 'Thiên Quyền', 'Ngọc Hành', 'Khai Dương', 'Dao Quang'];
 
 export default function ScrollIntro({ onComplete, skipLabel = 'Bỏ qua' }: ScrollIntroProps) {
   // visible：整个 intro 是否在显示

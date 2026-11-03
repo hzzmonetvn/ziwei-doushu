@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ZiweiChart, Palace, Star } from '@/lib/ziwei/types';
 import { BRANCHES, STEMS } from '@/lib/ziwei/constants';
+import { VI_TEXT } from '@/lib/i18n/vi';
 import PalaceCell from './PalaceCell';
 import TimeNav, { type TimeView, getYearStemIndex, buildSiHuaOverlay } from './TimeNav';
 
@@ -72,7 +73,7 @@ export default function ChartBoard({ chart, onStarSelect, onPalaceSelect, onSiHu
     }
     return {};
   })();
-  const overlayLabel = timeView === 'daxian' ? '限' : timeView === 'liunian' ? '年' : undefined;
+  const overlayLabel = timeView === 'daxian' ? 'Hạn' : timeView === 'liunian' ? 'Năm' : undefined;
 
   const handlePalaceClick = (branch: number) => {
     const isDeselecting = selectedBranch === branch;
@@ -160,9 +161,9 @@ export default function ChartBoard({ chart, onStarSelect, onPalaceSelect, onSiHu
           <div className="text-center space-y-1">
             <div className="text-[9px] tracking-[0.3em] font-medium" style={{ color: 'var(--t-gold)' }}>Tử Vi Đẩu Số</div>
             <div className="text-[10px] space-y-0.5" style={{ color: 'var(--t-faint)' }}>
-              <div>Cung Mệnh <span style={{ color: 'var(--t-gold)', opacity: 0.7 }}>{BRANCHES[chart.mingGongBranch]}</span></div>
-              <div>Cung Thân <span className="text-sky-500/70">{BRANCHES[chart.shenGongBranch]}</span></div>
-              <div className="text-[9px]" style={{ color: 'var(--t-gold)', opacity: 0.75 }}>{chart.wuxingJuName}</div>
+              <div>Cung Mệnh <span style={{ color: 'var(--t-gold)', opacity: 0.7 }}>{VI_TEXT[BRANCHES[chart.mingGongBranch]] ?? BRANCHES[chart.mingGongBranch]}</span></div>
+              <div>Cung Thân <span className="text-sky-500/70">{VI_TEXT[BRANCHES[chart.shenGongBranch]] ?? BRANCHES[chart.shenGongBranch]}</span></div>
+              <div className="text-[9px]" style={{ color: 'var(--t-gold)', opacity: 0.75 }}>{VI_TEXT[chart.wuxingJuName] ?? chart.wuxingJuName}</div>
             </div>
           </div>
 
@@ -172,14 +173,14 @@ export default function ChartBoard({ chart, onStarSelect, onPalaceSelect, onSiHu
               <div className="border border-purple-500/30 rounded-lg px-3 py-1.5 text-center"
                 style={{ background: 'rgba(147,51,234,0.06)' }}>
                 <div className="text-[8px] text-purple-500/80 mb-0.5 tracking-wider">Đại hạn hiện tại</div>
-                <div className="text-[12px] text-purple-400 font-medium tabular-nums">{dx.startAge}–{dx.endAge}tuổi</div>
-                <div className="text-[9px] text-purple-500/60">{dx.palaceName}</div>
+                <div className="text-[12px] text-purple-400 font-medium tabular-nums">{dx.startAge}–{dx.endAge} tuổi</div>
+                <div className="text-[9px] text-purple-500/60">{VI_TEXT[dx.palaceName] ?? dx.palaceName}</div>
               </div>
             );
           })()}
 
           <div className="text-[8px] text-center leading-relaxed font-mono" style={{ color: 'var(--t-faint)', opacity: 0.75 }}>
-            {chart.lunarInfo.lunarYear}·{chart.lunarInfo.isLeapMonth ? '闰' : ''}
+            {chart.lunarInfo.lunarYear}·{chart.lunarInfo.isLeapMonth ? 'Nhuận' : ''}
             {chart.lunarInfo.lunarMonth}·{chart.lunarInfo.lunarDay}
           </div>
         </motion.div>

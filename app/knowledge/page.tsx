@@ -4,6 +4,7 @@
  */
 
 import Link from 'next/link';
+import { VI_TEXT } from '@/lib/i18n/vi';
 import { ALL_STARS, ALL_TOPICS, getKnowledge, STAR_BRIEF_SEO, STAR_TO_SLUG } from '@/lib/seo/knowledge';
 import { TOPIC_LABEL } from '@/lib/ziwei/db-analysis';
 
@@ -40,10 +41,10 @@ export default function KnowledgeHomePage() {
           <div style={{ height: '1px', width: '48px', background: 'linear-gradient(to left, transparent, rgba(184,146,42,0.4))' }} />
         </div>
         <h1 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: 'var(--tx-0)', letterSpacing: '0.15em', marginBottom: '12px' }}>
-          Tử Vi Đẩu Số知识库
+          Kho kiến thức Tử Vi Đẩu Số
         </h1>
         <p style={{ fontSize: '14px', color: 'var(--tx-2)', letterSpacing: '0.08em', maxWidth: '600px', margin: '0 auto', lineHeight: 1.7 }}>
-          14 chính tinh × 13 宫位 = <strong style={{ color: 'var(--ac)' }}>{ALL_STARS.length * ALL_TOPICS.length}</strong> chủ đề<br />
+          14 chính tinh × 13 chủ đề = <strong style={{ color: 'var(--ac)' }}>{ALL_STARS.length * ALL_TOPICS.length}</strong> chủ đề<br />
           Biên soạn theo Thiên Kỷ của Nghê Hải Hạ · Có dẫn chứng cổ thư
         </p>
       </div>
@@ -56,7 +57,7 @@ export default function KnowledgeHomePage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
           {ALL_STARS.map(star => (
             <Link
-              key={star}
+              key={VI_TEXT[star] ?? star}
               href={`/knowledge/${STAR_TO_SLUG[star]}/overview`}
               style={{
                 display: 'block',
@@ -71,7 +72,7 @@ export default function KnowledgeHomePage() {
               className="hover:shadow-md hover:border-amber-400"
             >
               <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--tx-0)', letterSpacing: '0.15em' }}>
-                {star}
+                {VI_TEXT[star] ?? star}
               </div>
             </Link>
           ))}
@@ -88,7 +89,7 @@ export default function KnowledgeHomePage() {
             }}>
               <div className="flex items-baseline gap-3 mb-2">
                 <span style={{ fontSize: '20px', fontWeight: 700, color: 'var(--tx-0)', letterSpacing: '0.1em' }}>
-                  {star}星
+                  {VI_TEXT[star] ?? star}
                 </span>
                 <span style={{ fontSize: '11px', color: 'var(--tx-3)', letterSpacing: '0.15em' }}>
                   TỬ VI · 14 CHÍNH TINH
