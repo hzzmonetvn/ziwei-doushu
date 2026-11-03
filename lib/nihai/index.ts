@@ -39,9 +39,9 @@ export const NI_HAIXIA_BIO = {
   ],
   /** 师承关系 */
   teachers: [
-    { name: '周左宇', background: 'Danh y gia truyền bốn đời ở Bắc Kinh, chuyển đến Đài Loan sau năm 1949', subject: 'Châm cứu', period: '1977-1981' },
-    { name: '徐济民', background: 'Danh y tại Thượng Hải, quê Giang Tô', subject: 'Châm cứu', period: '1970s' },
-    { name: '姜佐景传承', background: 'Truyền nhân Kinh phương theo dòng Tào Dĩnh Phủ', subject: 'Kinh phương', period: 'Thời gian học nghề tại hiệu thuốc Bắc ở Cơ Long' },
+    { name: 'Chu Tả Vũ', nameOriginal: '周左宇', background: 'Danh y gia truyền bốn đời ở Bắc Kinh, chuyển đến Đài Loan sau năm 1949', subject: 'Châm cứu', period: '1977-1981' },
+    { name: 'Từ Tế Dân', nameOriginal: '徐济民', background: 'Danh y tại Thượng Hải, quê Giang Tô', subject: 'Châm cứu', period: '1970s' },
+    { name: 'Truyền thừa Khương Tá Cảnh', nameOriginal: '姜佐景传承', background: 'Truyền nhân Kinh phương theo dòng Tào Dĩnh Phủ', subject: 'Kinh phương', period: 'Thời gian học nghề tại hiệu thuốc Bắc ở Cơ Long' },
   ],
   /** 核心理念 */
   corePhilosophy: [
@@ -105,7 +105,7 @@ export const NI_HAIXIA_BIO = {
       meaning: 'Trung tri nhân sự',
       content: 'Châm Cứu Đại Thành (44 tập), Hoàng Đế Nội Kinh (20 tập), Thần Nông Bản Thảo Kinh (46 tập), Thương Hàn Luận và Kim Quỹ Yếu Lược (20 tập)',
       completionYear: '2004-2005',
-      totalLessons: '150+集',
+      totalLessons: 'Hơn 150 bài giảng',
       learningOrder: 'Châm Cứu → Hoàng Đế Nội Kinh → Thần Nông Bản Thảo Kinh → Thương Hàn Luận → Kim Quỹ Yếu Lược',
       acuExperience: 215,
       transNeedling: 31,
@@ -121,7 +121,15 @@ export const NI_HAIXIA_BIO = {
       existingContent: 'Phần Kham Dư trong Thiên Kỷ cùng di cảo do hậu học biên tập',
     },
   },
-  /** 人格特征 */
+  /** Mô tả nhân cách trong tư liệu gốc (khóa Hán tự giữ để tương thích). */
+  personalityVi: {
+    'Phong cách luận mệnh': 'Luận đoán thẳng thắn, quyết đoán',
+    'Sở thích âm nhạc': 'Yêu thích ban nhạc Eagles và Hotel California',
+    'Kỹ năng sinh hoạt': 'Giỏi nấu nướng và công việc gia đình',
+    'Phong cách làm việc': 'Chú trọng ghi chép và tham vấn kinh nghiệm tiền bối',
+    'Giấc ngủ': 'Theo tiểu sử, từng nhiều năm ngủ ít',
+    'Đánh giá của bệnh nhân': 'Được một số bệnh nhân gọi là niềm hy vọng cuối cùng (theo tiểu sử)',
+  },
   personality: {
     算命风格: 'Luận đoán thẳng thắn, quyết đoán',
     音乐爱好: 'Yêu thích ban nhạc Eagles và ca khúc Hotel California',
