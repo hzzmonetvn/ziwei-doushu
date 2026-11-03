@@ -27,6 +27,8 @@ export interface NiModule {
   references: string[];
   /** 核心概念/关键词 */
   keywords: string[];
+  /** Từ khóa gốc Hán tự dùng khi cần tra cứu song ngữ. */
+  keywordsOriginal?: string[];
   /** 图标字符 */
   icon: string;
   /** 状态 */
