@@ -20,7 +20,8 @@
 ## Chi tiết bản dịch lời giảng
 
 - Đã bảo tồn **1.848 đoạn nguồn** gồm **1.843 câu không trùng lặp**, 16 tập/bổ sung có mốc giờ và liên kết video.
-- Tệp [translation-report.vi.json](./docs/tianji-ziwei/translation-report.vi.json) ghi số lượng từng tập; [refinement-report.vi.json](./docs/tianji-ziwei/refinement-report.vi.json) ghi lại đợt hiệu chỉnh theo cặp nguồn Hán tự. Đợt này sửa **619 bản ghi** với hơn một nghìn lượt sửa thuật ngữ.
+- Tệp [translation-report.vi.json](./docs/tianji-ziwei/translation-report.vi.json) ghi số lượng từng tập; [refinement-report.vi.json](./docs/tianji-ziwei/refinement-report.vi.json) ghi lại đợt hiệu chỉnh theo cặp nguồn Hán tự. Các lượt đã hiệu chỉnh tên sao/cung, **241 nhãn chủ đề độc nhất** được chuẩn hóa, cùng **78 chú giải khảo cứu Hán tự** được chuyển sang tiếng Việt và chuyển nguyên bản vào phần đối chiếu. Có báo cáo tích lũy số lần thay thế, nhưng các lượt có thể trùng bản ghi; không đồng nghĩa tất cả lời giảng đã được hiệu đính thủ công.
+- **Kiểm tra từng chương:** không còn chữ Hán hiển thị bên ngoài mục nguyên văn; kiểm thử tự động tại `scripts/regression/vi-full-coverage.test.ts` sẽ bắt lỗi nếu chữ Hán rò rỉ trở lại.
 - Bản gốc được giữ trong `entries.jsonl` và `*.md` ở thư mục nguồn; bản dịch nằm ở `entries.vi.jsonl` và `vi/*.md`.
 - **Giới hạn:** Đây vẫn là **dịch máy**, còn có thể sai nghĩa, thiếu ngữ cảnh, từ cổ học, sao và địa danh. Chưa được dịch giả chuyên ngành kiểm duyệt thủ công toàn văn. Không được quảng bá là bản dịch chuyên gia hay trích dẫn trực tiếp mà không đối chiếu video.
 
