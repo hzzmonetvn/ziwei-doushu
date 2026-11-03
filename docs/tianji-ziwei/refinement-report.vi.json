@@ -81,11 +81,20 @@
         "Tử Vi": 16,
         "Vũ Khúc": 4
       }
+    },
+    {
+      "phase": "Aligned glossary correction",
+      "quote_records_modified": 1848,
+      "terminology_replacements": {
+        "Chú giải khảo cứu Việt hóa": 63,
+        "Nhãn chủ đề chuẩn hóa": 3175
+      }
     }
   ],
-  "record_edit_events": 1028,
+  "record_edit_events": 2876,
   "terminology_replacements_all_rounds": {
     "Bắc Đẩu": 163,
+    "Chú giải khảo cứu Việt hóa": 63,
     "Cung": 754,
     "Cung Mệnh": 23,
     "Cung Phúc Đức": 24,
@@ -96,6 +105,7 @@
     "Lộc Tồn": 22,
     "Miếu Vượng": 1,
     "Nam Đẩu": 71,
+    "Nhãn chủ đề chuẩn hóa": 3175,
     "Phá Quân": 70,
     "Phúc Đức": 19,
     "Quan Lộc": 7,
