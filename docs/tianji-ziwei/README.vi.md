@@ -43,7 +43,7 @@ Mỗi đoạn gồm liên kết đến thời điểm phát biểu, nguyên văn
 
 Tệp `entries.jsonl` chứa dữ liệu cùng nội dung dưới dạng JSON Lines, một đoạn mỗi dòng. Schema gốc nằm trong [tài liệu dữ liệu của nguồn](https://github.com/Renhuai123/nihai-tianji-corpus/blob/main/data/schema.md).
 
-**Trạng thái bản dịch (03/11/2026):** Đã có **1.848/1.848 đoạn** tiếng Việt theo mốc thời gian, đủ **16 chương Markdown** tại [thư mục bản dịch](./vi/), dữ liệu song ngữ [entries.vi.jsonl](./entries.vi.jsonl), và [báo cáo đối chiếu 1.848 đoạn](./translation-report.vi.json). Bước sửa các lỗi thuật ngữ máy dịch đã điều chỉnh **619 bản ghi**, có thống kê ở [refinement-report.vi.json](./refinement-report.vi.json). **Bản dịch máy chưa được người có chuyên môn hiệu đính toàn bộ từng câu**; chỉ phù hợp đọc tham khảo và phải kiểm tra video gốc khi trích dẫn chính xác.
+**Trạng thái bản dịch (03/11/2026):** Đã có **1.848/1.848 đoạn** tiếng Việt theo mốc thời gian, đủ **16 chương Markdown** tại [thư mục bản dịch](./vi/), dữ liệu song ngữ [entries.vi.jsonl](./entries.vi.jsonl), và [báo cáo đối chiếu 1.848 đoạn](./translation-report.vi.json). Hệ thống đã hiệu chỉnh nhiều lượt thuật ngữ; **241 nhãn phân loại chuyên ngành** đã được soạn bản Việt đối chiếu bằng tay ở [bảng thuật ngữ chủ đề](./taxonomy-glossary.vi.json), và **78 ghi chú Hán tự hiển thị** đã được dịch bằng bảng [annotation-glossary.vi.json](./annotation-glossary.vi.json), vẫn giữ nguyên bản trong phần đối chiếu. Xem số liệu tích lũy ở [refinement-report.vi.json](./refinement-report.vi.json). **Bản dịch máy chưa được người có chuyên môn hiệu đính toàn bộ từng câu**; chỉ phù hợp đọc tham khảo và phải kiểm tra video gốc khi trích dẫn chính xác.
 
 ### Cấu trúc bản dịch
 
