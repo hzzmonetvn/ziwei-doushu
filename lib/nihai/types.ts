@@ -128,6 +128,10 @@ export interface TransNeedling {
 
 /** 汉唐方剂 */
 export interface HantangFormula {
+  nameVi?: string;
+  indicationVi?: string;
+  theoryVi?: string;
+  ingredientsVi?: string;
   id: number;
   /** 方名（如「白带丸」、「大禹丸」） */
   name: string;
