@@ -24,6 +24,7 @@ SOURCE = DOCS / "entries.jsonl"
 BILINGUAL = DOCS / "entries.vi.jsonl"
 REPORT = DOCS / "refinement-report.vi.json"
 TOPIC_GLOSSARY = json.loads((DOCS / "taxonomy-glossary.vi.json").read_text(encoding="utf-8"))
+ANNOTATION_GLOSSARY = json.loads((DOCS / "annotation-glossary.vi.json").read_text(encoding="utf-8"))
 PARTS = {
     3: "2上", 5: "3上", 7: "4上", 9: "5上", 11: "6上",
     13: "7上", 15: "8上", 17: "9上", 19: "10上",
@@ -83,6 +84,7 @@ RULES: tuple[tuple[str, str, str, str], ...] = (
     ("迁移宫", r"\bdi\s+cư\b", "Thiên Di", "Thiên Di"),
     ("庙旺", r"\bđền\s+thờ\s+và\s+sự\s+thịnh\s+vượng\b", "Miếu Vượng", "Miếu Vượng"),
     ("坐庙", r"\bngồi\s+trong\s+đền\s+thờ\b", "tọa Miếu", "tọa Miếu"),
+    ("乐", r"“乐”", "“Lạc”", "Chữ Lạc (Hán–Việt)"),
     ("宫", r"\bcung\s+điện\b", "cung", "Cung"),
 )
 COMPILED = [(zh, re.compile(pattern, flags=re.I), replacement, label)
@@ -194,6 +196,24 @@ def update_markdown(stem: str, part: int, old_rows: list[dict], new_rows: list[d
                     if original_annotation not in "".join(lines[index:index+8]):
                         lines[index + 5] = original_annotation + "\n" + lines[index + 5]
                     counts["Chú giải khảo cứu Việt hóa"] += 1
+            # Source Markdown may contain additional inline editorial notes that
+            # never entered the JSONL "note" field. Translate ALL of them by
+            # exact source-note lookup and retain the original in <details>.
+            while True:
+                match = re.search(r"〔([^〕]+)〕", line)
+                if not match or not re.search(r"[\u3400-\u9fff]", match.group(1)):
+                    break
+                raw_note = match.group(1)
+                translated_note = ANNOTATION_GLOSSARY.get(raw_note)
+                if not translated_note:
+                    raise ValueError(f"Untranslated inline research note in {stem} #{i}: {raw_note[:100]}")
+                line = line[:match.start()] + "〔Chú giải: " + html.escape(translated_note) + "〕" + line[match.end():]
+                if index + 5 >= len(lines) or "「" not in lines[index + 4]:
+                    raise ValueError(f"Unexpected original quote structure in {stem} #{i}")
+                original_note_line = "  > 〔" + html.escape(raw_note) + "〕"
+                if original_note_line not in "".join(lines[index:index+8]):
+                    lines[index + 5] = original_note_line + "\n" + lines[index + 5]
+                counts["Chú giải Hán tự ngoài JSONL"] += 1
             lines[index] = line
     if i != len(new_rows):
         raise ValueError(f"Chapter {stem} only contains {i}/{len(new_rows)} excerpts")
