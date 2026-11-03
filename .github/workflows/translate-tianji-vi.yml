@@ -42,5 +42,9 @@ jobs:
             echo "No new translated content"
           else
             git commit -m "docs(vi): publish bilingual translations for all 1848 Tian Ji excerpts"
+            # Main branch may have advanced while the translation job was running.
+            # Rebase the generated documentation on the latest localization branch.
+            git fetch origin localization/vi-VN
+            git rebase origin/localization/vi-VN
             git push origin HEAD:localization/vi-VN
           fi
