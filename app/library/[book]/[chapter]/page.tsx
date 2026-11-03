@@ -95,25 +95,28 @@ export default async function ChapterPage({ params }: { params: Promise<{ book: 
                   color: 'var(--tx-0)',
                   lineHeight: 2,
                   letterSpacing: '0.04em',
-                  fontFamily: '"PingFang SC", "Hiragino Sans GB", serif',
+                  fontFamily: '"Inter", "Roboto", "Arial", serif',
                 }}>
-                  {p.text}
+                  {p.translation ?? p.text}
                 </p>
               </div>
               {p.translation && (
-                <div style={{
-                  marginTop: '8px',
+                <details style={{
+                  marginTop: '12px',
                   marginLeft: '36px',
-                  padding: '8px 12px',
-                  background: 'rgba(184,146,42,0.05)',
-                  borderRadius: '6px',
-                  fontSize: '13px',
+                  padding: '10px 14px',
+                  border: '1px solid rgba(184,146,42,0.15)',
+                  borderRadius: '8px',
                   color: 'var(--tx-2)',
-                  lineHeight: 1.8,
                 }}>
-                  <span style={{ fontSize: '10px', color: 'var(--ac)', marginRight: '6px' }}>Diễn giải</span>
-                  {p.translation}
-                </div>
+                  <summary style={{ cursor: 'pointer', fontSize: '12px', color: 'var(--ac)' }}>Xem nguyên văn Hán tự</summary>
+                  <p lang="zh-Hans" data-vi-skip style={{
+                    fontSize: '14px',
+                    lineHeight: 1.8,
+                    marginTop: '8px',
+                    fontFamily: '"Noto Serif CJK SC", "Songti SC", serif',
+                  }}>{p.text}</p>
+                </details>
               )}
               {p.niNote && (
                 <div style={{
