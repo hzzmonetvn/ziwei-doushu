@@ -58,14 +58,14 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
             <div className="flex items-center gap-1">
               {mingStars.length > 0 ? (
                 mingStars.map(s => (
-                  <span key={s} className="font-bold text-lg" style={{ color: 'var(--t-gold)' }}{VI_TEXT[s] ?? s}</span>
+                  <span key={s} className="font-bold text-lg" style={{ color: 'var(--t-gold)' }}>{VI_TEXT[s] ?? s}</span>
                 ))
               ) : (
                 <span className="text-sm" style={{ color: 'var(--t-faint)' }}>Vô chính diệu</span>
               )}
             </div>
             {nature && (
-              <div className="text-[10px] mt-1" style={{ color: 'var(--t-gold)', opacity: 0.5 }}{translateVisibleText(nature)}</div>
+              <div className="text-[10px] mt-1" style={{ color: 'var(--t-gold)', opacity: 0.5 }}>{translateVisibleText(nature)}</div>
             )}
           </div>
 
@@ -89,7 +89,7 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
 
           <div className="ml-auto text-right">
             <div className="text-[9px] mb-1" style={{ color: 'var(--t-faint)', opacity: 0.85 }}>Cục Ngũ hành · Đại hạn hiện tại</div>
-            <div className="text-[11px]" style={{ color: 'var(--t-text2)' }}{VI_TEXT[chart.wuxingJuName] ?? chart.wuxingJuName}</div>
+            <div className="text-[11px]" style={{ color: 'var(--t-text2)' }}>{VI_TEXT[chart.wuxingJuName] ?? chart.wuxingJuName}</div>
             {currentDx && (
               <div className="text-[11px] text-purple-500 mt-0.5">
                 {currentDx.startAge}~{currentDx.endAge} tuổi · {VI_TEXT[currentDx.palaceName] ?? currentDx.palaceName}
@@ -136,7 +136,7 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
                   className="flex items-center justify-between px-3 py-2 rounded-lg text-[10px]"
                   style={{ background: c.bg, border: `1px solid ${c.border}`, color: c.text }}
                 >
-                  <span className="font-medium"{VI_TEXT[name] ?? name}</span>
+                  <span className="font-medium">{VI_TEXT[name] ?? name}</span>
                   <div className="flex items-center gap-1.5 text-right">
                     <span style={{ opacity: 0.6 }} className="text-[9px]">{VI_TEXT[palaceName] ?? palaceName}</span>
                     <span className="font-bold">Hóa {VI_TEXT[siHua] ?? siHua}</span>
