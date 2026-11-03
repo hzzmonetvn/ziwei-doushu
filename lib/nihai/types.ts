@@ -149,6 +149,10 @@ export interface HantangFormula {
 
 /** 经典经方 */
 export interface ClassicFormula {
+  nameVi?: string;
+  compositionVi?: string;
+  indicationVi?: string;
+  niUsageVi?: string;
   id: string;
   /** 方名 */
   name: string;
