@@ -1,5 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
+import { VI_TEXT, translateVisibleText } from '@/lib/i18n/vi';
+import { patternNameVi, patternDescriptionVi } from '@/lib/i18n/patterns-vi';
 import type { ZiweiChart } from '@/lib/ziwei/types';
 import { detectPatterns } from '@/lib/ziwei/patterns';
 
@@ -31,7 +33,7 @@ export default function PatternsCard({ chart }: { chart: ZiweiChart }) {
           const st = LevelStyle[p.level];
           return (
             <motion.div
-              key={`${p.name}-${i}`}
+              key={`${patternNameVi(p.name)}-${i}`}
               initial={{ opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.04 }}
@@ -39,18 +41,18 @@ export default function PatternsCard({ chart }: { chart: ZiweiChart }) {
             >
               <div className="flex items-center gap-2 mb-1.5">
                 <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${st.dot}`} />
-                <span className={`text-[11px] font-medium ${st.label}`}>{p.name}</span>
+                <span className={`text-[11px] font-medium ${st.label}`}>{patternNameVi(p.name)}</span>
                 <div className="flex gap-1 ml-auto">
                   {p.palaces.slice(0, 2).map(pa => (
                     <span key={pa} className={`text-[8px] px-1.5 py-px rounded-full border ${st.badge}`}>
-                      {pa.replace('宫', '')}
+                      {translateVisibleText(pa)}
                     </span>
                   ))}
                 </div>
               </div>
 
               <p className="text-[10px] leading-relaxed pl-3.5" style={{ color: 'var(--t-text2)' }}>
-                {p.description}
+                {patternDescriptionVi(p.name, p.description)}
               </p>
 
               {p.conditions && (
@@ -59,21 +61,21 @@ export default function PatternsCard({ chart }: { chart: ZiweiChart }) {
                     <div className="text-[9px] leading-relaxed" style={{ color: 'var(--t-text2)', opacity: 0.85 }}>
                       <span className="font-medium" style={{ color: 'var(--t-gold)' }}>Điều kiện bắt buộc</span>
                       <span style={{ opacity: 0.6 }}> · </span>
-                      {p.conditions.required.join('、')}
+                      {p.conditions.required.map(translateVisibleText).join(' · ')}
                     </div>
                   )}
                   {p.conditions.bonus && p.conditions.bonus.length > 0 && (
                     <div className="text-[9px] leading-relaxed" style={{ color: 'var(--t-text2)', opacity: 0.85 }}>
                       <span className="font-medium text-emerald-500">Yếu tố cát lợi</span>
                       <span style={{ opacity: 0.6 }}> · </span>
-                      {p.conditions.bonus.join('、')}
+                      {p.conditions.bonus.map(translateVisibleText).join(' · ')}
                     </div>
                   )}
                   {p.conditions.breaking && p.conditions.breaking.length > 0 && (
                     <div className="text-[9px] leading-relaxed" style={{ color: 'var(--t-text2)', opacity: 0.85 }}>
                       <span className="font-medium text-orange-500">Yếu tố phá cách</span>
                       <span style={{ opacity: 0.6 }}> · </span>
-                      {p.conditions.breaking.join('、')}
+                      {p.conditions.breaking.map(translateVisibleText).join(' · ')}
                     </div>
                   )}
                 </div>
@@ -81,7 +83,7 @@ export default function PatternsCard({ chart }: { chart: ZiweiChart }) {
 
               {p.source && (
                 <div className="text-[9px] mt-1.5 pl-3.5" style={{ color: 'var(--t-faint)', opacity: 0.5 }}>
-                  Nguồn cổ thư · {p.source}
+                  Nguồn cổ thư · {translateVisibleText(p.source)}
                 </div>
               )}
             </motion.div>

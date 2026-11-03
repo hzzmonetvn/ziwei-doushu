@@ -1,5 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
+import { VI_TEXT, translateVisibleText } from '@/lib/i18n/vi';
+import { patternNameVi, patternDescriptionVi } from '@/lib/i18n/patterns-vi';
 import type { ZiweiChart } from '@/lib/ziwei/types';
 import { BRANCHES, STEMS } from '@/lib/ziwei/constants';
 import { detectPatterns, getMingGongSummary } from '@/lib/ziwei/patterns';
@@ -56,14 +58,14 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
             <div className="flex items-center gap-1">
               {mingStars.length > 0 ? (
                 mingStars.map(s => (
-                  <span key={s} className="font-bold text-lg" style={{ color: 'var(--t-gold)' }}>{s}</span>
+                  <span key={s} className="font-bold text-lg" style={{ color: 'var(--t-gold)' }}{VI_TEXT[s] ?? s}</span>
                 ))
               ) : (
                 <span className="text-sm" style={{ color: 'var(--t-faint)' }}>Vô chính diệu</span>
               )}
             </div>
             {nature && (
-              <div className="text-[10px] mt-1" style={{ color: 'var(--t-gold)', opacity: 0.5 }}>{nature}</div>
+              <div className="text-[10px] mt-1" style={{ color: 'var(--t-gold)', opacity: 0.5 }}{translateVisibleText(nature)}</div>
             )}
           </div>
 
@@ -78,7 +80,7 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
                       background: 'rgba(212,168,67,0.08)',
                       border: '1px solid rgba(212,168,67,0.15)',
                     }}>
-                    {k}
+                    {translateVisibleText(k)}
                   </span>
                 ))}
               </div>
@@ -87,10 +89,10 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
 
           <div className="ml-auto text-right">
             <div className="text-[9px] mb-1" style={{ color: 'var(--t-faint)', opacity: 0.85 }}>Cục Ngũ hành · Đại hạn hiện tại</div>
-            <div className="text-[11px]" style={{ color: 'var(--t-text2)' }}>{chart.wuxingJuName}</div>
+            <div className="text-[11px]" style={{ color: 'var(--t-text2)' }}{VI_TEXT[chart.wuxingJuName] ?? chart.wuxingJuName}</div>
             {currentDx && (
               <div className="text-[11px] text-purple-500 mt-0.5">
-                {currentDx.startAge}~{currentDx.endAge}tuổi · {currentDx.palaceName}
+                {currentDx.startAge}~{currentDx.endAge} tuổi · {VI_TEXT[currentDx.palaceName] ?? currentDx.palaceName}
               </div>
             )}
           </div>
@@ -100,11 +102,10 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
           style={{ borderTop: '1px solid var(--t-border)', color: 'var(--t-faint)' }}>
           <span>Dương lịch {chart.birthInfo.year}-{chart.birthInfo.month}-{chart.birthInfo.day}</span>
           <span>
-            Âm lịch {chart.lunarInfo.lunarYear}年{chart.lunarInfo.isLeapMonth ? '闰' : ''}
-            {chart.lunarInfo.lunarMonth}月{chart.lunarInfo.lunarDay}日
+            Âm lịch {chart.lunarInfo.lunarDay}/{chart.lunarInfo.lunarMonth}/{chart.lunarInfo.lunarYear}{chart.lunarInfo.isLeapMonth ? ' (tháng nhuận)' : ''}
           </span>
-          <span>{STEMS[chart.lunarInfo.yearStem]}{BRANCHES[chart.lunarInfo.yearBranch]}年 · {BRANCHES[chart.birthInfo.hour]}时</span>
-          <span>命宫{BRANCHES[chart.mingGongBranch]} · 身宫{BRANCHES[chart.shenGongBranch]}</span>
+          <span>{VI_TEXT[STEMS[chart.lunarInfo.yearStem]] ?? STEMS[chart.lunarInfo.yearStem]} {VI_TEXT[BRANCHES[chart.lunarInfo.yearBranch]] ?? BRANCHES[chart.lunarInfo.yearBranch]} niên · giờ {VI_TEXT[BRANCHES[chart.birthInfo.hour]] ?? BRANCHES[chart.birthInfo.hour]}</span>
+          <span>Cung Mệnh {VI_TEXT[BRANCHES[chart.mingGongBranch]] ?? BRANCHES[chart.mingGongBranch]} · Cung Thân {VI_TEXT[BRANCHES[chart.shenGongBranch]] ?? BRANCHES[chart.shenGongBranch]}</span>
         </div>
       </div>
       </motion.div>
@@ -135,10 +136,10 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
                   className="flex items-center justify-between px-3 py-2 rounded-lg text-[10px]"
                   style={{ background: c.bg, border: `1px solid ${c.border}`, color: c.text }}
                 >
-                  <span className="font-medium">{name}</span>
+                  <span className="font-medium"{VI_TEXT[name] ?? name}</span>
                   <div className="flex items-center gap-1.5 text-right">
-                    <span style={{ opacity: 0.6 }} className="text-[9px]">{palaceName.replace('宫', '')}</span>
-                    <span className="font-bold">化{siHua}</span>
+                    <span style={{ opacity: 0.6 }} className="text-[9px]">{VI_TEXT[palaceName] ?? palaceName}</span>
+                    <span className="font-bold">Hóa {VI_TEXT[siHua] ?? siHua}</span>
                   </div>
                 </div>
               );
@@ -174,17 +175,17 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
                 >
                   <div className="flex items-center gap-2 mb-1.5">
                     <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${st.dot}`} />
-                    <span className={`text-[11px] font-medium ${st.label}`}>{p.name}</span>
+                    <span className={`text-[11px] font-medium ${st.label}`}>{patternNameVi(p.name)}</span>
                     <div className="flex gap-1 ml-auto">
                       {p.palaces.slice(0, 2).map(pa => (
                         <span key={pa} className={`text-[8px] px-1.5 py-px rounded-full border ${st.badge}`}>
-                          {pa.replace('宫', '')}
+                          {translateVisibleText(pa)}
                         </span>
                       ))}
                     </div>
                   </div>
                   <p className="text-[10px] leading-relaxed pl-3.5" style={{ color: 'var(--t-text2)' }}>
-                    {p.description}
+                    {patternDescriptionVi(p.name, p.description)}
                   </p>
 
                   {p.conditions && (
@@ -193,21 +194,21 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
                         <div className="text-[9px] leading-relaxed" style={{ color: 'var(--t-text2)', opacity: 0.85 }}>
                           <span className="font-medium" style={{ color: 'var(--t-gold)' }}>Bắt buộc</span>
                           <span style={{ opacity: 0.6 }}> · </span>
-                          {p.conditions.required.join('、')}
+                          {p.conditions.required.map(translateVisibleText).join(' · ')}
                         </div>
                       )}
                       {p.conditions.bonus && p.conditions.bonus.length > 0 && (
                         <div className="text-[9px] leading-relaxed" style={{ color: 'var(--t-text2)', opacity: 0.85 }}>
                           <span className="font-medium text-emerald-500">Cát lợi bổ trợ</span>
                           <span style={{ opacity: 0.6 }}> · </span>
-                          {p.conditions.bonus.join('、')}
+                          {p.conditions.bonus.map(translateVisibleText).join(' · ')}
                         </div>
                       )}
                       {p.conditions.breaking && p.conditions.breaking.length > 0 && (
                         <div className="text-[9px] leading-relaxed" style={{ color: 'var(--t-text2)', opacity: 0.85 }}>
                           <span className="font-medium text-orange-500">Phá cách</span>
                           <span style={{ opacity: 0.6 }}> · </span>
-                          {p.conditions.breaking.join('、')}
+                          {p.conditions.breaking.map(translateVisibleText).join(' · ')}
                         </div>
                       )}
                     </div>
@@ -215,7 +216,7 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
 
                   {p.source && (
                     <div className="text-[9px] mt-1.5 pl-3.5" style={{ color: 'var(--t-faint)', opacity: 0.5 }}>
-                      Xuất xứ · {p.source}
+                      Xuất xứ · {translateVisibleText(p.source)}
                     </div>
                   )}
                 </motion.div>
@@ -253,7 +254,7 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
                 }}
               >
                 <div className="font-mono tabular-nums">{dx.startAge}~{dx.endAge}</div>
-                <div className="text-[9px] mt-0.5" style={{ opacity: 0.7 }}>{dx.palaceName.replace('宫', '')}</div>
+                <div className="text-[9px] mt-0.5" style={{ opacity: 0.7 }}>{VI_TEXT[dx.palaceName] ?? dx.palaceName}</div>
               </div>
             );
           })}
