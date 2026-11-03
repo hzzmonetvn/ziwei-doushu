@@ -46,6 +46,42 @@ RULES: tuple[tuple[str, str, str, str], ...] = (
     ("田宅", r"\b(?:thiên\s+trại|tianzhai|thiên\s+trang)\b", "Điền Trạch", "Điền Trạch"),
     ("命宫", r"\bmệnh\s+cung\b", "cung Mệnh", "cung Mệnh"),
     ("大限", r"\b(?:giới\s+hạn\s+lớn|giới\s+hạn\s+vĩ\s+đại)\b", "Đại hạn", "Đại hạn"),
+    ("贪狼", r"\bgreedy\s+wolf\b", "Tham Lang", "Tham Lang"),
+    ("贪狼", r"\b(?-i:Tham Lam)\b", "Tham Lang", "Tham Lang"),
+    ("廉贞", r"\blian\s*zhen(?:xing)?\b", "Liêm Trinh", "Liêm Trinh"),
+    ("廉贞", r"\b(?-i:Chính Trực)\b", "Liêm Trinh", "Liêm Trinh"),
+    ("七杀", r"\bseven\s+kills?\b", "Thất Sát", "Thất Sát"),
+    ("七杀", r"\bbảy\s+lần\s+giết\s+chết\b", "Thất Sát", "Thất Sát"),
+    ("破军", r"\bpo\s*jun(?:xing)?\b", "Phá Quân", "Phá Quân"),
+    ("紫微", r"\bzi\s*wei\s*xing\b", "Tử Vi", "Tử Vi"),
+    ("天机", r"\btian\s*ji(?:xing)?\b", "Thiên Cơ", "Thiên Cơ"),
+    ("太阳", r"\btai\s*yang(?:xing)?\b", "Thái Dương", "Thái Dương"),
+    ("太阴", r"\btai\s*yin(?:xing)?\b", "Thái Âm", "Thái Âm"),
+    ("天府", r"\btian\s*fu(?:xing)?\b", "Thiên Phủ", "Thiên Phủ"),
+    ("天府", r"\bthiên\s+phúc\b", "Thiên Phủ", "Thiên Phủ"),
+    ("天同", r"\btian\s*tong(?:xing)?\b", "Thiên Đồng", "Thiên Đồng"),
+    ("天梁", r"\btian\s*liang(?:xing)?\b", "Thiên Lương", "Thiên Lương"),
+    ("天相", r"\btian\s*xiang(?:xing)?\b", "Thiên Tướng", "Thiên Tướng"),
+    ("巨门", r"\bju\s*men(?:xing)?\b", "Cự Môn", "Cự Môn"),
+    ("武曲", r"\bwu\s*qu(?:xing)?\b", "Vũ Khúc", "Vũ Khúc"),
+    ("文昌", r"\bwen\s*chang(?:xing)?\b", "Văn Xương", "Văn Xương"),
+    ("文曲", r"\bwen\s*qu(?:xing)?\b", "Văn Khúc", "Văn Khúc"),
+    ("天魁", r"\btian\s*kui(?:xing)?\b", "Thiên Khôi", "Thiên Khôi"),
+    ("天钺", r"\btian\s*yue(?:xing)?\b", "Thiên Việt", "Thiên Việt"),
+    ("左辅", r"\bzuo\s*fu(?:xing)?\b", "Tả Phụ", "Tả Phụ"),
+    ("右弼", r"\byou\s*bi(?:xing)?\b", "Hữu Bật", "Hữu Bật"),
+    ("禄存", r"\blu\s*cun(?:xing)?\b", "Lộc Tồn", "Lộc Tồn"),
+    ("北斗", r"\bbei\s*dou\b", "Bắc Đẩu", "Bắc Đẩu"),
+    ("南斗", r"\bnan\s*dou\b", "Nam Đẩu", "Nam Đẩu"),
+    ("福德宫", r"\b(?:fortune|phúc\s+đức)\s+palace\b", "cung Phúc Đức", "Cung Phúc Đức"),
+    ("福德宫", r"\bcung\s+may\s+mắn\b", "cung Phúc Đức", "Cung Phúc Đức"),
+    ("命宫", r"\bcung\s+sự\s+sống\b", "cung Mệnh", "Cung Mệnh"),
+    ("身宫", r"\bbody\s+palace\b", "cung Thân", "Cung Thân"),
+    ("财帛", r"\btiền\s+lụa\b", "Tài Bạch", "Tài Bạch"),
+    ("官禄", r"\blương\s+chính\s+thức\b", "Quan Lộc", "Quan Lộc"),
+    ("迁移宫", r"\bdi\s+cư\b", "Thiên Di", "Thiên Di"),
+    ("庙旺", r"\bđền\s+thờ\s+và\s+sự\s+thịnh\s+vượng\b", "Miếu Vượng", "Miếu Vượng"),
+    ("坐庙", r"\bngồi\s+trong\s+đền\s+thờ\b", "tọa Miếu", "tọa Miếu"),
     ("宫", r"\bcung\s+điện\b", "cung", "Cung"),
 )
 COMPILED = [(zh, re.compile(pattern, flags=re.I), replacement, label)
@@ -170,6 +206,8 @@ def run(check_only: bool) -> None:
         olds = [row for row in old_rows if row["part"] == part]
         news = [row for row in revised if row["part"] == part]
         update_markdown(stem, part, olds, news, counts, check_only)
+    if check_only and counts:
+        raise ValueError("Unapplied glossary corrections remain: " + str(dict(counts)))
     if not check_only:
         BILINGUAL.write_text(
             "\n".join(json.dumps(row, ensure_ascii=False) for row in revised) + "\n",
