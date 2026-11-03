@@ -197,6 +197,36 @@ def get_cached() -> dict[str, str]:
     return cache
 
 
+def get_cached_taxonomy() -> dict[str, str]:
+    """Preserve manually/refinement-edited taxonomy from the bilingual corpus."""
+    cache: dict[str, str] = {}
+    if TARGET.exists():
+        for line in TARGET.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                item = json.loads(line)
+                for field in ("h2", "h3", "note"):
+                    original, translated = item.get(field), item.get(field + "_vi")
+                    if original and translated:
+                        cache[original] = translated
+            except (ValueError, KeyError):
+                continue
+    return cache
+
+
+def get_cached_headings(stem: str, original_lines: list[str]) -> dict[str, str]:
+    """Reuse generated chapter headings to avoid retranslating on each run."""
+    path = CHAPTERS / (stem + ".md")
+    if not path.exists():
+        return {}
+    heading_re = re.compile(r"^##\\s*§\\d+\\s+[0-9:]+\\s+(.*)$")
+    old = [m.group(1) for line in original_lines if (m := heading_re.match(line))]
+    new = [m.group(1) for line in path.read_text(encoding="utf-8").splitlines()
+           if (m := heading_re.match(line))]
+    return dict(zip(old, new)) if len(old) == len(new) else {}
+
+
 def translate_corpus() -> None:
     original = [json.loads(line) for line in SOURCE.read_text(encoding="utf-8").splitlines() if line.strip()]
     if len(original) != 1848:
@@ -224,9 +254,10 @@ def translate_corpus() -> None:
         str(row.get(field) or "") for row in original for field in ("h2", "h3", "note")
         if row.get(field)
     ))
-    tax_vi: dict[str, str] = {}
+    tax_vi: dict[str, str] = get_cached_taxonomy()
     for i, text in enumerate(taxonomy):
-        tax_vi[text] = translate_one(text)
+        if text not in tax_vi:
+            tax_vi[text] = translate_one(text)
         if i % 50 == 0:
             print(f"[vi] Taxonomy {i + 1}/{len(taxonomy)}", flush=True)
 
@@ -260,6 +291,7 @@ def translate_corpus() -> None:
         if not original_path.exists():
             raise RuntimeError(f"Expected chapter missing: {original_path}")
         original_lines = original_path.read_text(encoding="utf-8").splitlines()
+        heading_cache = get_cached_headings(stem, original_lines)
         out_lines: list[str] = [
             f"# Thiên Kỷ · Tập {stem.replace('上',' thượng').replace('下',' hạ').replace('_补充1',' (bổ sung 1)').replace('_补充2',' (bổ sung 2)')}",
             "",
@@ -299,13 +331,13 @@ def translate_corpus() -> None:
             elif line.startswith("## "):
                 match = re.match(r"^(##\s*§\d+\s+[0-9:]+\s+)(.*)$", line)
                 if match:
-                    out_lines.append(match.group(1) + translate_one(match.group(2)))
+                    out_lines.append(match.group(1) + heading_cache.get(match.group(2), translate_one(match.group(2)) if match.group(2) not in heading_cache else heading_cache[match.group(2)]))
                 else:
                     out_lines.append(line)
             elif not line.strip():
                 out_lines.append(line)
             elif line.startswith("倪海厦"):
-                out_lines.append(f"Nghê Hải Hạ, Thiên Kỷ, bản ghi tập {stem}; đối chiếu liên kết video trong các mục bên dưới.")
+                out_lines.append(f"Nghê Hải Hạ, Thiên Kỷ, bản ghi tập {stem.replace('上', ' thượng').replace('下', ' hạ').replace('_补充1', ' (bổ sung 1)').replace('_补充2', ' (bổ sung 2)')}; đối chiếu liên kết video trong các mục bên dưới.")
             else:
                 out_lines.append(line)
         if count != sum(1 for x in translated if x["part"] == part):
