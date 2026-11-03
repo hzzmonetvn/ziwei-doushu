@@ -126,204 +126,34 @@ export const STAR_IN_FUQI_GU: Record<string, {
 // ─── 四化在夫妻宫的完整断语 ──────────��─────────────────────
 
 export const SIHUA_IN_FUQI_GU = {
-  '化禄': '与配偶有先天缘分，配偶个性乐观，婚后感情更好，配偶越来越会赚钱，缘分深厚；自化禄则财来财去，感情有但难守',
-  '化权': '婚姻多为主动争取而来，配偶掌握决策权，大部分事情配偶自行裁决，需学会放手；争取型婚姻，越强求越难得',
-  '化科': '视为小禄，能与配偶和谐相处，有贵人缘，利于恋爱结婚；科在夫妻主配偶有名声或专业技能',
-  '化忌': '欠下婚姻债务，早婚早离，建议晚婚或不婚；配偶对本人有怨言；化忌冲夫妻宫尤凶——生离死别之兆',
+  '化禄': "Hóa Lộc tại Phu Thê được luận về nhân duyên và việc chia sẻ nguồn lực; Tự Hóa Lộc có cách giải riêng.",
+  '化权': "Hóa Quyền biểu thị tính chủ động và trách nhiệm; hai người cần cân bằng quyền quyết định.",
+  '化科': "Hóa Khoa được luận về sự hòa hợp, danh tiếng, kiến thức và quý nhân hỗ trợ.",
+  '化忌': "Hóa Kỵ liên hệ những vướng mắc cần giải quyết, không đồng nghĩa chia ly hoặc tử vong.",
 };
 
 // ─── 合盘核心方法论 ─────────────────────────────────────────
 
-export const HEMING_METHODOLOGY = `
-## 合盘分析核心框架（倪海厦体系 + 《紫微斗数全书》综合）
-
-### 一、双宫联参原则（倪海厦最重要的婚姻断法）
-
-**核心口诀：「看婚姻，光看夫妻宫，大错特错，一定要同时看福德宫。」**
-
-- **夫妻宫**：看配偶的星性、外形、性格、互动模式
-- **福德宫**：代表夫妻深层感情、婚姻能否长久
-- **倪师案例**：“有人夫妻宫很好，福德宫很烂，散！夫妻要散。”
-
-**因此合盘时必须同时分析双方的：命宫 + 夫妻宫 + 福德宫**
-
----
-
-### 二、天作之合的判断标准
-
-**最高级匹配（天作之合）**：
-- 甲方夫妻宫主星 = 乙方命宫主星
-- 乙方夫妻宫主星 = 甲方命宫主星
-- 两者互相对应，则为命中注定的一对
-
-**次级良配**：
-- 一方夫妻宫主星 = 对方命宫主星（单向对应）
-- 双方命宫星性五行相生（如木命配土命、土命配水命）
-- 双方大限同走旺运
-
-**凶兆组合**：
-- 双方互相化忌冲对方命宫（互为冤家）
-- 一方化忌飞入另一方夫妻宫（带给对方婚姻伤害）
-- 双方夫妻宫皆有重煞无吉星
-
----
-
-### 三、完整合盘五步法
-
-**第一步：评估双方命格基础**
-- 双方命宫格局是否般配（同类型 or 互补型）
-- 重点看：命宫 + 身宫 + 福德宫的星性搭配
-- 警戒：双方皆为杀破狼格（两虎相争）；或一强一弱过度悬殊
-
-**第二步：夫妻宫互参**
-- 甲方夫妻宫主星 → 是否对应乙方命宫/三合方星？
-- 乙方夫妻宫主星 → 是否对应甲方命宫/三合方星？
-- 双方夫妻宫各自的四化状态（化禄/化忌影响最大）
-
-**第三步：太阳太阴星象分析**
-- 女命：太阳代表丈夫；太阳庙旺=旺夫，落陷化忌=克夫
-- 男命：太阴代表妻子；太阴庙旺=妻美贤，化忌=婆媳不和
-- 这两颗星在双方命盘中的状态，直接影响婚姻质量
-
-**第四步：四化飞化互参（高级技法）**
-- 甲方生年干 → 找到四化星 → 这些星落在乙方命盘哪个宫位
-  - 化禄飞入乙方命宫/财帛宫：对乙方有正向帮助
-  - 化忌飞入乙方夫妻宫：带给乙方婚姻伤害
-  - 化忌飞入乙方命宫：自身给对方带来压力
-- 乙方生年干 → 反向飞化分析甲方
-- 形成”飞化互参“，判断双向的”缘分类型”
-
-**第五步：大限同步分析**
-- 双方当前大限是否同走旺运：俱旺=最佳时机，俱衰=共同挑战
-- 一方旺一方衰：需有意识平衡双方状态
-- 流年三合方桃花星聚集：当年结婚好时机
-
----
-
-### 四、缘分类型判断
-
-| 化缘类型 | 特征 |
-|---------|------|
-| 化禄引动 | 正缘、真爱，感情甜蜜顺遂 |
-| 化权引动 | 主动争取的感情，有张力，有主导方 |
-| 化科引动 | 和谐相处的缘分，互相尊重，白头偕老型 |
-| 化忌引动 | 逆缘/冤家，彼此折磨但难以分离，需修行方可化解 |
-| 双方互化忌 | “冤家路窄“型，感情强烈但痛苦并存，前世欠债型 |
-
----
-
-### 五、婚期判断三层法
-
-**第一层：本命盘格局**
-- 夫妻宫无煞：宜早婚
-- 夫妻宫有煞无吉：宜晚婚（男30以上，女27以上）
-- 武曲、廉贞、七杀、破军在夫妻宫：一律建议晚婚
-
-**第二层：大限**
-- 大限夫妻宫吉星多：该十年有结婚机会
-- 大限夫妻宫化忌：该十年感情受阻
-
-**第三层：流年**
-- 红鸾、天喜入命宫或夫妻宫：该年婚恋有动
-- 流年宫位落到夫妻宫：该年婚姻是重点
-- 流年三合方桃花星汇集：该年感情机遇多
-
----
-
-### 六、各宫位结婚情形
-
-| 流年宫位 | 结婚情形 |
-|---------|---------|
-| 夫妻宫 | 正常感情发展结婚 |
-| 命宫 | 自己主动出击结婚 |
-| 子女宫 | 奉子成婚（先上车后补票） |
-| 田宅宫 | 因家庭、房产缘故结婚 |
-| 父母宫 | 奉父母之命，经长辈介绍 |
-
----
-
-### 七、克夫/克妻的具体标志
-
-**克夫命（非传统含义）倪师定义**：
-> “克夫的女孩子，就是太太在前面走，先生在后面满头大汗提着大包小包付钱，好不容易等到车，先生还要帮太太开门。这叫克夫。”
-> “旺夫，一个太太完全让先生没有后顾之忧。”
-
-**具体标志**：
-- 夫妻宫廉贞+贪狼/破军/七杀（三凶组合）
-- 太阳落陷化忌（女命）
-- 太阴化忌（男命）
-- 夫妻宫四煞齐聚无吉星
-- 寡宿孤辰入命宫或夫妻宫
-- 福德宫破军陷落 + 廉贞平（水中做冢格）
-
----
-
-### 八、事业合作合盘判断
-
-**主要参考宫位**：
-- 官禄宫：双方事业宫星性是否兼容
-- 兄弟宫（仆役宫）：代表合伙关系
-- 福德宫：能否同甘共苦
-
-**事业合作吉象**：
-- 双方命宫互补（一谋一行）
-- 一方官禄宫化禄飞入另一方官禄宫
-- 兄弟宫有禄存无化忌冲
-
-**事业合作凶象**：
-- 双方化忌互冲官禄宫
-- 对方命宫化忌飞入己方财帛宫（对方消耗自己钱财）
-- 巨门在兄弟/仆役宫：倪师：”巨门在朋友宫，代表跟朋友合伙会朋友变仇人”
-
----
-
-### 九、感情相位类型（命格兼容性速判）
-
-| 双方组合 | 兼容性 | 说明 |
-|---------|-------|------|
-| 紫微 + 天府 | ★★★★★ | 帝星遇财库，相互成就，最稳定 |
-| 天相 + 任何星 | ★★★★ | 印星佐才，天相适应性强 |
-| 天梁 + 天同 | ★★★★ | 老成与温和互补，白头偕老型 |
-| 太阳 + 太阴 | ★★★★ | 日月并明，经典互补，阴阳调和 |
-| 七杀 + 七杀 | ★★ | 两虎相争，火花大，矛盾多 |
-| 破军 + 破军 | ★★ | 双破，彼此破坏，婚姻不稳 |
-| 廉贞 + 七杀/破军 | ★ | 三凶组合之二，生离死别风险最高 |
-| 杀破狼 + 机月同梁 | ★★★ | 动静互补，但需磨合，一方开拓一方守成 |
-| 紫破 + 廉府 | ★★★★ | 格局相当，互相吸引 |
-| 武曲 + 天同 | ★★★ | 刚柔互济，武曲收敛遇天同温和，能互补 |
-
----
-
-### 十、倪海厦合盘核心名言汇总
-
-1. **“看婚姻，光看夫妻宫，大错特错，一定要同时看福德宫。”**
-2. **“廉贞贪狼/廉贞破军在夫妻宫，不管男命女命，非生离即死别。”**
-3. **“廉贞七杀——半路埋尸；廉贞破军——水中做冢；廉贞贪狼——横夭夭折。”**
-4. **“太阳化忌，上不见父，下不见子，中不见夫。“（女命那十年配偶有重大灾难）**
-5. **“男人的命，最怕太阴化忌，婆媳不和，太太跟妈妈一定不和。”**
-6. **“旺夫，一个太太完全让先��没有后顾之忧；克夫是感情太好，完全以对方为主。”**
-7. **“巨门在朋友宫，跟朋友合伙会朋友变仇人。”**
-8. **“如果你娶个太太是七杀入命，那你差不多毁了一半了，很累啊，草木皆兵。”**
-`;
+export const HEMING_METHODOLOGY = "## Khung phân tích ghép hai lá số (theo hệ thống Nghê Hải Hạ và Tử Vi Đẩu Số Toàn Thư)\n\n**Lưu ý:** Nội dung sau ghi nhận quan niệm của trường phái Tử Vi truyền thống. Không có cơ sở khoa học để dự đoán chắc chắn tình cảm, khả năng kết hôn, ngoại tình, ly dị, tử vong hay tài vận bằng lá số.\n\n### I. Nguyên tắc đối chiếu hai cung\n\nCổ quyết được tóm lược: “Luận hôn nhân mà chỉ xem cung Phu Thê là chưa đủ; phải phối hợp cung Phúc Đức.”\n\n- **Cung Phu Thê:** Hình tượng sao ở lĩnh vực người phối ngẫu, cách tương tác và tình cảm.\n- **Cung Phúc Đức:** Phúc khí, chiều sâu tâm lý và đời sống tinh thần.\n- **Cung Mệnh:** Tính chất tiên thiên, phong cách ứng xử.\n- **Tam phương tứ chính:** Quan hệ giữa Mệnh, Tài Bạch, Quan Lộc, Thiên Di và Đối cung.\n\nKhi ghép lá số cần xét đồng thời cung Mệnh, cung Phu Thê và cung Phúc Đức của cả hai người.\n\n### II. Tiêu chí hòa hợp trong cổ thư\n\n**Tổ hợp được coi là hòa hợp cao:**\n- Chính tinh cung Phu Thê của người A trùng hoặc tương hợp với chính tinh cung Mệnh người B.\n- Chính tinh cung Phu Thê của người B trùng hoặc tương hợp với chính tinh cung Mệnh người A.\n- Sự tương ứng hai chiều từng được gọi là Thiên tác chi hợp, nhưng không có nghĩa là định mệnh không thể thay đổi.\n\n**Tổ hợp phối hợp tốt:**\n- Sự tương ứng một chiều giữa Phu Thê và Mệnh.\n- Ngũ hành, tinh tính và hành xử của hai bên có thể bổ trợ nhau.\n- Đại hạn có những yếu tố cát lợi trong cách luận truyền thống.\n\n**Tổ hợp cần xem xét kỹ:**\n- Hóa Kỵ, sát tinh tại những cung liên hệ với Phu Thê hoặc Mệnh.\n- Một số phương pháp Phi Hóa có quy tắc riêng; không trộn các phái.\n- Không sử dụng các dấu hiệu trên để gán lỗi cho một người hay khuyên chia tay.\n\n### III. Năm bước luận ghép lá số\n\n**Bước 1: Xét nền tảng Mệnh cách.** So sánh cung Mệnh, cung Thân, cung Phúc Đức và các sao chủ đạo; ghi nhận sự tương đồng và bổ trợ theo tinh tính.\n\n**Bước 2: Đối chiếu cung Phu Thê.** Xem chính tinh Phu Thê của người A đối chiếu Mệnh và Tam hợp người B, rồi làm chiều ngược lại. Xét Tứ Hóa và sát tinh từng lá số.\n\n**Bước 3: Xét Thái Dương và Thái Âm.** Phân tích vị trí Miếu, Vượng, Lợi, Hãm, hội chiếu và Tứ Hóa. Những quan niệm cổ về vai trò nam và nữ không được xem là chân lý về giới.\n\n**Bước 4: Đối chiếu Phi Hóa khi đúng phương pháp.** Nếu dùng bảng Hóa theo thiên can, xét Hóa Lộc, Hóa Quyền, Hóa Khoa, Hóa Kỵ ở các cung tương ứng. Phải phân biệt Sinh niên, Đại hạn và Lưu niên; không suy diễn “người này gây hại cho người kia” từ một sao.\n\n**Bước 5: Phối hợp Đại hạn và Lưu niên.** Xét những giai đoạn được cổ thư mô tả là thuận hoặc không thuận. Không đưa ra năm cưới hay kết thúc quan hệ như một tiên đoán chắc chắn.\n\n### IV. Hình tượng Tứ Hóa khi ghép lá số\n\n| Loại | Ý nghĩa truyền thống |\n|---|---|\n| Hóa Lộc | Tài lộc, nhân duyên, hỗ trợ |\n| Hóa Quyền | Quyền hành, chủ động và trách nhiệm |\n| Hóa Khoa | Khoa danh, hòa giải, sự tôn trọng |\n| Hóa Kỵ | Trở lực, vướng mắc, vấn đề cần thương lượng |\n| Hóa Kỵ hai chiều | Cách cục được coi là có nhiều khác biệt, không đồng nghĩa quan hệ độc hại |\n\n### V. Xét thời điểm hôn nhân\n\n**Tầng bản mệnh:** Cung Phu Thê có cát tinh và sát tinh ra sao. Một số cổ thư khuyên kết hôn khi đủ chín chắn nếu có nhiều sát tinh, Vũ Khúc, Liêm Trinh, Thất Sát hoặc Phá Quân; không có ngưỡng tuổi bắt buộc.\n\n**Tầng Đại hạn:** Xét vị trí cung Phu Thê của Đại hạn và Tứ Hóa trong chu kỳ mười năm.\n\n**Tầng Lưu niên:** Xét Hồng Loan, Thiên Hỷ, các sao ở Mệnh và Phu Thê theo đúng phép an sao. Đây chỉ là cách đọc truyền thống, không bảo đảm hôn nhân diễn ra trong năm.\n\n### VI. Các cung liên hệ đến chủ đề kết hôn\n\n| Cung Lưu niên | Chủ đề có thể tham khảo |\n|---|---|\n| Phu Thê | Quan hệ đôi lứa, cam kết hôn nhân |\n| Mệnh | Bản thân chủ động lựa chọn |\n| Tử Tức | Kế hoạch con cái, gia đình |\n| Điền Trạch | Nhà cửa và môi trường cư trú |\n| Phụ Mẫu | Cha mẹ, người lớn tuổi và sự giới thiệu từ gia đình |\n\n### VII. “Khắc phu/khắc thê” trong cách nói cổ\n\nMột số lời giảng sử dụng khái niệm “khắc phu”, “khắc thê” theo nghĩa ví von về sự bất cân bằng trách nhiệm giữa hai người. Tuy nhiên, các phán đoán rằng Liêm Trinh – Tham Lang, Liêm Trinh – Phá Quân hoặc Liêm Trinh – Thất Sát tại Phu Thê chắc chắn dẫn đến tai họa, tử vong hay chia ly là những quan niệm cổ cực đoan. Không thể dùng chúng đánh giá tính mạng, đạo đức hay phẩm chất con người.\n\nCác yếu tố có thể được một số phái xét gồm Hóa Kỵ, các sát tinh tại Phu Thê, các sao Nhật Nguyệt, Cô Thần và Quả Tú. Phải cân nhắc tổng thể và không biến các nhận định này thành sự thật cá nhân.\n\n### VIII. Luận hợp tác sự nghiệp\n\nCác cung tham khảo: Quan Lộc (sự nghiệp), Huynh Đệ hoặc Nô Bộc (đối tác), Phúc Đức (động lực và sự đồng hành).\n\nNhững phối hợp như hai cung Mệnh bổ trợ nhau hoặc Hóa Lộc chiếu Quan Lộc được cổ thư xem là cát; Hóa Kỵ, Cự Môn, sát tinh hội Nô Bộc được xem là trở lực. Nhưng quyết định làm ăn phải dựa trên năng lực thực tế, hợp đồng, dòng tiền và mức độ tin cậy, không chỉ dựa vào lá số.\n\n### IX. Một số tổ hợp tương quan\n\n| Chính tinh / cách cục | Đặc điểm theo trường phái |\n|---|---|\n| Tử Vi – Thiên Phủ | Quyền uy kết hợp ổn định |\n| Thiên Tướng – chính tinh khác | Tính hỗ trợ, điều hòa |\n| Thiên Lương – Thiên Đồng | Trách nhiệm kết hợp hòa nhã |\n| Thái Dương – Thái Âm | Dương và Âm bổ sung |\n| Thất Sát – Thất Sát | Hai người quyết đoán, cần thống nhất cách phân quyền |\n| Phá Quân – Phá Quân | Cùng muốn thay đổi, cần cam kết lâu dài |\n| Liêm Trinh – Thất Sát / Phá Quân | Khác biệt trong cách xử lý biến động |\n| Sát Phá Tham – Cơ Nguyệt Đồng Lương | Khai phá phối hợp ổn định |\n| Tử Phá – Liêm Phủ | Tính cách có thể bổ sung nhau |\n| Vũ Khúc – Thiên Đồng | Cương và nhu cùng tồn tại |\n\n### X. Dẫn chứng lời giảng\n\nCác trích dẫn trong bài giảng Thiên Kỷ đề cập việc phối hợp cung Phu Thê với cung Phúc Đức, tính chất Liêm Trinh, Nhật Nguyệt, Thất Sát và Cự Môn. Một số câu có lời lẽ cực đoan hoặc tính định mệnh của bối cảnh giảng dạy. Khi muốn trích dẫn nguyên văn, hãy kiểm tra mốc video trong docs/tianji-ziwei thay vì tự tạo lời trích hay trình bày bản dịch ý là nguyên văn.\n";
 
 // ─── 婚姻判断辅助表 ───────────��─────────────────────────────
 
 export const MARRIAGE_STARS_BRIEF: Record<string, string> = {
-  '红鸾': '婚恋正缘，入命身主动成婚；流年逢红鸾该年婚恋有动',
-  '天喜': '婚喜，与红鸾相互引动，主喜事到来',
-  '天姚': '才艺桃花，感情机遇；婚恋中遇天姚易有浪漫邂逅',
-  '咸池': '强力桃花，注意感情纷扰；遇贪狼则桃花最旺',
-  '孤辰': '孤克之星，男命入命宫主独立好，但入夫妻宫主缘浅',
-  '寡宿': '孤克之星，女命入命或夫妻宫，主婚姻不顺聚少离多',
-  '天哭': '孤克刑伤，入夫妻宫主配偶有重大灾祸',
-  '天虚': '空耗之星，入夫妻宫主感情虚耗',
-  '天巫': '晚婚遗产宗教；入夫妻宫主晚婚为吉，早婚多波折',
+  '红鸾': "Hồng Loan chủ duyên hỷ theo cổ thư, cần xem phối hợp các sao.",
+  '天喜': "Thiên Hỷ chủ hỷ sự, thường phối hợp Hồng Loan.",
+  '天姚': "Thiên Diêu chủ Đào Hoa, tài nghệ và giao tế.",
+  '咸池': "Hàm Trì là Đào Hoa tinh, cần xét tổ hợp toàn cục.",
+  '孤辰': "Cô Thần mang tính độc lập, không quyết định hôn nhân.",
+  '寡宿': "Quả Tú được liên hệ với cảm giác cô đơn hoặc xa cách.",
+  '天哭': "Thiên Khốc là sao biểu tượng buồn phiền, không dự đoán tai họa.",
+  '天虚': "Thiên Hư liên hệ hụt hẫng, hao tổn tinh thần.",
+  '天巫': "Thiên Vu được luận về tín ngưỡng và sự trợ lực trong một số phái.",
 };
 
 export const HEMING_SCORE_CRITERIA = {
-  '五星': '双方夫妻宫互映天作之合，四化相互补益，大限同走旺运，福德宫双吉',
-  '四星': '一方夫妻宫对应对方命宫，四化以禄科为主，感情基础扎实',
-  '三星': '命格相配但各有棱角，需磨合，长期来看稳定',
-  '二星': '夫妻宫各有煞星，化忌有冲，感情起伏大，需双方主动经营',
-  '一星': '凶星汇聚夫妻宫，或廉贞三凶组合，生离死别风险高',
+  '五星': "Hai cung Phu Thê có nhiều yếu tố hội chiếu cát lợi theo cách luận cổ.",
+  '四星': "Có sự phối hợp tích cực giữa các chính tinh và Tứ Hóa, vẫn cần vun đắp.",
+  '三星': "Có điểm tương đồng và khác biệt, cần đối thoại để đồng hành.",
+  '二星': "Một số tổ hợp được xem là bất lợi; quan hệ thực tế vẫn do hai người quyết định.",
+  '一星': "Nhiều tổ hợp sát tinh trong cổ thư; không thể dùng để dự báo chia tay hay tai họa.",
 };
