@@ -5,6 +5,7 @@ on:
     branches: [localization/vi-VN]
     paths:
       - scripts/refine_tianji_vi.py
+      - docs/tianji-ziwei/taxonomy-glossary.vi.json
       - .github/workflows/refine-tianji-vi.yml
   workflow_dispatch:
 
