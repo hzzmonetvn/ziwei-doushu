@@ -57,7 +57,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
                 <div style={{ fontSize: '14px', marginBottom: '6px' }}>Chưa tìm thấy từ khóa này trong các cổ thư hiện có</div>
                 <div style={{ fontSize: '11px', color: 'var(--tx-3)', lineHeight: 1.7 }}>
                   Thư viện đang tiếp tục được bổ sung. Bạn có thể tìm thử:<br />
-                  <span style={{ color: 'var(--ac)' }}>七杀朝斗 / 双禄朝垣 / 化忌 / 紫微 / 命宫 / 机月同梁</span>
+                  <span style={{ color: 'var(--ac)' }}>Thất Sát triều đẩu / Song Lộc triều viên / Hóa Kỵ / Tử Vi / Cung Mệnh / Cơ Nguyệt Đồng Lương</span>
                 </div>
               </>
             ) : (

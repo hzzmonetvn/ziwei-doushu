@@ -56,14 +56,14 @@ export default function PrivacyPage() {
       <h2 style={{ fontSize: 18, marginTop: 32, marginBottom: 12 }}>6. Cookie và lưu trữ cục bộ</h2>
       <p>Trang web dùng cookie và localStorage để ghi nhớ giao diện sáng/tối, lịch sử lá số gần đây và trạng thái đăng nhập. Bạn có thể tắt chúng trong trình duyệt, nhưng một số chức năng có thể bị ảnh hưởng.</p>
 
-      <h2 style={{ fontSize: 18, marginTop: 32, marginBottom: 12 }}>7. 未成年人</h2>
-      <p>本平台命理内容面向 18 岁以上成年用户。未成年人请在监护人同意下使用，并不得将解读用于重大人生决策。</p>
+      <h2 style={{ fontSize: 18, marginTop: 32, marginBottom: 12 }}>7. Người chưa thành niên</h2>
+      <p>Nội dung mệnh lý chủ yếu dành cho người từ 18 tuổi trở lên. Người chưa thành niên cần được người giám hộ đồng ý khi sử dụng và không nên dựa vào luận giải để đưa ra quyết định quan trọng.</p>
 
-      <h2 style={{ fontSize: 18, marginTop: 32, marginBottom: 12 }}>8. 政策变更</h2>
-      <p>本政策可能不定期更新。重大变更将以显著方式通知。继续使用即表示同意更新后的版本。</p>
+      <h2 style={{ fontSize: 18, marginTop: 32, marginBottom: 12 }}>8. Thay đổi chính sách</h2>
+      <p>Chính sách có thể được cập nhật định kỳ. Những thay đổi quan trọng sẽ được thông báo rõ ràng. Việc tiếp tục sử dụng đồng nghĩa với chấp thuận chính sách mới trong phạm vi pháp luật áp dụng.</p>
 
         <p style={{ marginTop: 48, fontSize: 12, color: 'var(--tx-3)' }}>
-          <a href="/terms" style={{ color: 'var(--ac)' }}>服务条款</a> · <a href="/" style={{ color: 'var(--ac)' }}>Về trang chủ</a>
+          <a href="/terms" style={{ color: 'var(--ac)' }}>Điều khoản dịch vụ</a> · <a href="/" style={{ color: 'var(--ac)' }}>Về trang chủ</a>
         </p>
       </main>
     </>
