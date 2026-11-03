@@ -115,6 +115,10 @@ export interface AcuExperience {
 
 /** 透针透穴法 */
 export interface TransNeedling {
+  comboVi?: string;
+  indicationVi?: string;
+  supportingVi?: string;
+  sourceVi?: string;
   id: number;
   /** 透穴组合：A透B */
   combo: string;
