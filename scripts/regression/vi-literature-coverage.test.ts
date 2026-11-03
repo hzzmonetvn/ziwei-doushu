@@ -7,6 +7,9 @@ import { VI_TEXT } from '../../lib/i18n/vi';
 assert.equal(HEXAGRAMS.length, 64);
 for (const h of HEXAGRAMS) {
   assert.ok(h.nameVi && h.compositionVi && h.meaningVi && h.niInterpretationVi && h.divinationVi, 'Incomplete Vietnamese Yi Jing hexagram: ' + h.number);
+  for (const key of ['nameVi', 'compositionVi', 'meaningVi', 'niInterpretationVi', 'divinationVi'] as const) {
+    assert.ok(!/[\u3400-\u9fff]/.test(h[key] || ''), 'Untranslated Chinese in hexagram ' + h.number + ' / ' + key);
+  }
   assert.ok(h.name && h.meaning, 'Lost original Yi Jing source: ' + h.number);
 }
 assert.equal(TIANJI_EPISODES.length, 24);
