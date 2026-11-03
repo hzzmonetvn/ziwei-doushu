@@ -1,24 +1,20 @@
-# 行为准则
+# Quy tắc ứng xử
 
-我们希望这里是一个就事论事、互相尊重的地方。本准则参考 [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) 的精神改写。
+Chúng tôi mong muốn cộng đồng thảo luận dựa trên chứng cứ và sự tôn trọng. Tài liệu này tham khảo tinh thần của [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 
-## 我们期望
+## Hành vi được khuyến khích
 
-- 对事不对人，讨论观点和证据，不攻击提出观点的人。
-- 尊重不同的流派和看法；有分歧时摆出处、摆对照，而不是比嗓门。
-- 对新人耐心，提问不嫌问题简单。
+- Tập trung vào vấn đề và lập luận, không công kích người đưa ra quan điểm.
+- Tôn trọng các trường phái Tử Vi khác nhau. Khi có bất đồng, hãy dẫn nguồn và dữ liệu đối chiếu.
+- Giúp đỡ thành viên mới, kể cả với câu hỏi cơ bản.
 
-## 不能接受
+## Hành vi không được chấp nhận
 
-- 人身攻击、侮辱、骚扰、歧视性言论。
-- 未经本人同意公开他人的隐私，包括手机号、住址，以及他人的生辰等个人信息。
-- 借命理结论恐吓、诋毁具体的人。
-- 广告刷屏、与项目无关的推销。
+- Công kích cá nhân, lăng mạ, quấy rối hoặc phân biệt đối xử.
+- Tiết lộ thông tin riêng tư khi chưa có sự đồng ý, gồm số điện thoại, địa chỉ và thông tin sinh của người khác.
+- Dùng kết quả mệnh lý để đe dọa, xúc phạm hoặc gây tổn hại tới người cụ thể.
+- Quảng cáo tràn lan và hoạt động tiếp thị không liên quan đến dự án.
 
-## 处理
+## Thực thi
 
-维护者可以编辑、隐藏或删除违反本准则的内容，必要时锁定讨论或拒绝相关账号继续参与。遇到问题，可以在 issue 里 @ 维护者，或通过 README「关于与联系」里的方式联系。
-
----
-
-**English.** Be respectful and stick to the issue. No harassment, personal attacks, or publishing other people's private information (including their birth data) without consent. Maintainers may edit, hide or remove content that violates this code, and may restrict participation when necessary.
+Người bảo trì có quyền chỉnh sửa, ẩn hoặc xóa nội dung vi phạm và có thể khóa thảo luận hoặc hạn chế quyền tham gia trong trường hợp cần thiết. Nếu phát hiện vi phạm, hãy thông báo qua GitHub Issue hoặc kênh liên hệ trong README.
