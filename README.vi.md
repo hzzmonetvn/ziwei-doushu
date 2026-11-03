@@ -54,10 +54,10 @@ Các chữ **廟/庙, 旺, 得, 利, 平, 不, 陷** trong dữ liệu thuật t
 ## Phạm vi Việt hóa
 
 - `lib/i18n/vi.ts`: bảng từ vựng chuyên môn và nhãn giao diện.
-- `components/VietnameseLocalization.tsx`: lớp chuyển nhãn DOM ở phía trình duyệt, bao gồm giao diện được render động. Những cụm chưa được xác nhận vẫn có thể còn nguyên văn gốc; đây không phải bản dịch toàn bộ kho tư liệu.
+- `components/VietnameseLocalization.tsx`: lớp chuyển nhãn DOM ở phía trình duyệt, bao gồm giao diện được render động. Những cụm chưa được xác nhận vẫn có thể còn nguyên văn gốc; đây chỉ là lớp dự phòng hiển thị; nội dung chi tiết Thiên Kỷ đã có bản dịch song ngữ riêng.
 - `app/layout.tsx`: nhãn ngôn ngữ, tiêu đề, mô tả và Open Graph tiếng Việt.
 - **Không thay khóa thuật toán, tên thuộc tính JSON, đường dẫn hoặc phương pháp an sao**. Bảng tên tiếng Trung vẫn là dữ liệu nguồn cho bộ máy Tử Vi.
-- **Không tự ý dịch lại cổ văn hay lời giảng trích nguyên văn**: cần dịch và kiểm định theo từng đoạn, đồng thời bảo lưu nguyên bản để đối chiếu và ghi rõ nguồn/giấy phép.
+- **Các bản dịch lời giảng/kinh điển là tài liệu tham khảo**: đã có [bản dịch máy song ngữ 1.848 đoạn Thiên Kỷ](./docs/tianji-ziwei/README.vi.md). Giữ nguyên văn, mốc video, giấy phép và không trích dẫn bản dịch như lời nói đã được hiệu đính.
 
 ## Nguồn tham khảo đối chiếu thuật ngữ
 

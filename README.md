@@ -115,7 +115,7 @@ Tải ba phần (tổng dung lượng nén 5,5 GB) tại [Releases v3.0-samples]
 
 ## 7. Tư liệu lời giảng và cổ thư
 
-Thư mục [`docs/tianji-ziwei/`](./docs/tianji-ziwei/README.vi.md) lưu **1.848 đoạn trích** thuộc phần Tử Vi của *Thiên Kỷ* (14 bài và hai phần bổ sung), kèm mốc thời gian phát biểu. Nguồn ban đầu: [nihai-tianji-corpus](https://github.com/Renhuai123/nihai-tianji-corpus).
+Thư mục [`docs/tianji-ziwei/`](./docs/tianji-ziwei/README.vi.md) lưu **1.848 đoạn trích song ngữ Trung–Việt** thuộc phần Tử Vi của *Thiên Kỷ* (14 bài và hai phần bổ sung), kèm mốc thời gian phát biểu. [**Đọc 16 chương tiếng Việt**](./docs/tianji-ziwei/vi/) hoặc [tải dữ liệu JSONL tiếng Việt](./docs/tianji-ziwei/entries.vi.jsonl). Bản dịch máy đã được sửa các thuật ngữ sai phổ biến nhưng vẫn cần hiệu đính từng câu. Nguồn ban đầu: [nihai-tianji-corpus](https://github.com/Renhuai123/nihai-tianji-corpus).
 
 **Nguyên văn Hán tự trong cổ thư và bản ghi lời giảng được giữ lại làm dữ liệu gốc để đối chiếu**. Phần giao diện và các nội dung đã có bản dịch tiếng Việt không thay đổi khóa Hán tự của thuật toán.
 
