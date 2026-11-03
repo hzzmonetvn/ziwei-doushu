@@ -45,7 +45,7 @@
 
 **Bổ sung ngày 31/10/2026:** Nền tảng vận hành đổi tên thành **OURANIC** tại [ouranic.cn](https://ouranic.cn/?from=gh-readme); tên miền cũ tự động chuyển hướng.
 
-**Bổ sung ngày 27/10/2026:** Bộ máy hỗ trợ múi giờ tiêu chuẩn của nơi sinh ngoài Trung Quốc qua tham số \`utcOffsetMinutes\`. Tệp \`clock-adjust.ts\` hỗ trợ hiệu chỉnh giờ đồng hồ do DST hoặc thay đổi múi giờ, cần người dùng xác nhận trước khi áp dụng. Bộ máy chỉ **phát hiện** DST Trung Quốc, không tự trừ thời gian DST.
+**Bổ sung ngày 27/10/2026:** Bộ máy hỗ trợ múi giờ tiêu chuẩn của nơi sinh ngoài Trung Quốc qua tham số `utcOffsetMinutes`. Tệp `clock-adjust.ts` hỗ trợ hiệu chỉnh giờ đồng hồ do DST hoặc thay đổi múi giờ, cần người dùng xác nhận trước khi áp dụng. Bộ máy chỉ **phát hiện** DST Trung Quốc, không tự trừ thời gian DST.
 
 ## 3. Năng lực của bộ máy an sao
 
@@ -60,7 +60,7 @@
 | **Thập nhị thần sát** | Xếp theo địa chi năm sinh hoặc địa chi Lưu niên |
 | **Nhận diện cách cục** | Hơn 1.100 dòng quy tắc, ví dụ Tử Phủ đồng cung, Nhật Nguyệt tịnh minh, Thất Sát triều đẩu |
 
-Mã thuật toán nằm tại \`lib/ziwei/\`, điểm vào là \`generateChart()\` trong \`algorithm.ts\`. Đầu vào gồm **ngày dương lịch** và **chỉ số giờ địa chi 0–11**: Tý = 0, Sửu = 1, …, Hợi = 11. Chỉ số này **không phải số giờ 0–23**.
+Mã thuật toán nằm tại `lib/ziwei/`, điểm vào là `generateChart()` trong `algorithm.ts`. Đầu vào gồm **ngày dương lịch** và **chỉ số giờ địa chi 0–11**: Tý = 0, Sửu = 1, …, Hợi = 11. Chỉ số này **không phải số giờ 0–23**.
 
 ## 4. Bắt đầu nhanh
 
@@ -79,17 +79,17 @@ npm test
 npm run build
 ~~~
 
-**An sao không cần API Key.** Bản mã nguồn mở **không chứa API backend**. Muốn dùng AI luận giải (\`/api/interpret\`) và phân tích ghép lá số (\`/api/heming\`), cần tự triển khai các endpoint tương ứng. Điền API Key nhưng không có backend sẽ không làm chức năng AI hoạt động.
+**An sao không cần API Key.** Bản mã nguồn mở **không chứa API backend**. Muốn dùng AI luận giải (`/api/interpret`) và phân tích ghép lá số (`/api/heming`), cần tự triển khai các endpoint tương ứng. Điền API Key nhưng không có backend sẽ không làm chức năng AI hoạt động.
 
-Chưa có trong repo: cơ sở dữ liệu luận giải đầy đủ (tệp \`lib/ziwei/db-analysis.ts\` chỉ là khung), API máy chủ, hệ thống tài khoản, thanh toán và cấu hình triển khai dịch vụ thương mại.
+Chưa có trong repo: cơ sở dữ liệu luận giải đầy đủ (tệp `lib/ziwei/db-analysis.ts` chỉ là khung), API máy chủ, hệ thống tài khoản, thanh toán và cấu hình triển khai dịch vụ thương mại.
 
 ## 5. Bộ dữ liệu luận giải v4.0
 
 Tải tại [Releases — v4.0-13d](https://github.com/Renhuai123/ziwei-doushu/releases/tag/v4.0-13d).
 
 - Phủ các ngày dương lịch có thật trong giai đoạn 1950–2026, 12 giờ địa chi và hai giới tính.
-- Một dòng JSON Lines ứng với một lá số. Các trường: \`k\` (khóa), \`y/m/d\` (ngày dương lịch), \`h\` (chỉ số giờ), \`g\` (giới tính), \`ms\` (chính tinh đầu tiên tại cung Mệnh, hoặc \`null\`), \`t\` (thống kê số chữ), \`c\` (13 bài luận giải Markdown).
-- Sinh tự động từ bộ máy an sao và thư viện luận đoán tại thời điểm 15/10/2026 (phiên bản \`ca268829f7a9\`); không dùng AI để tạo trực tiếp.
+- Một dòng JSON Lines ứng với một lá số. Các trường: `k` (khóa), `y/m/d` (ngày dương lịch), `h` (chỉ số giờ), `g` (giới tính), `ms` (chính tinh đầu tiên tại cung Mệnh, hoặc `null`), `t` (thống kê số chữ), `c` (13 bài luận giải Markdown).
+- Sinh tự động từ bộ máy an sao và thư viện luận đoán tại thời điểm 15/10/2026 (phiên bản `ca268829f7a9`); không dùng AI để tạo trực tiếp.
 - Chỉ có góc nhìn lá số bản mệnh, không chứa nội dung AI theo người dùng, những phần phụ thêm dựa trên tuổi hiện tại hoặc quy tắc tự động thêm trên website.
 - Không áp dụng hiệu chỉnh giờ mặt trời thực cho từng nơi sinh khi sinh dữ liệu mẫu.
 
@@ -99,7 +99,7 @@ Giải nén tệp từng năm:
 zstd -d --long=27 year-1990.jsonl.zst
 ~~~
 
-Tham số \`--long=27\` là bắt buộc do bộ nén sử dụng cửa sổ dài. Có tệp \`SHA256SUMS.txt\` để kiểm tra toàn vẹn và gói tổng \`ziwei-interp-v4-all.tar\`.
+Tham số `--long=27` là bắt buộc do bộ nén sử dụng cửa sổ dài. Có tệp `SHA256SUMS.txt` để kiểm tra toàn vẹn và gói tổng `ziwei-interp-v4-all.tar`.
 
 **Bản quyền:** Phần dữ liệu v4.0 áp dụng [CC BY 4.0](./DATASET-LICENSE) với yêu cầu ghi nguồn, **ngoại trừ** các trích dẫn từ *Thiên Kỷ*, thuộc quyền tác giả riêng. Việc sử dụng hàng loạt lời giảng phải tuân theo [CC BY-NC-SA 4.0](./docs/tianji-ziwei/LICENSE.md) và quyền của chủ sở hữu.
 
@@ -108,14 +108,14 @@ Tham số \`--long=27\` là bắt buộc do bộ nén sử dụng cửa sổ dà
 Tải ba phần (tổng dung lượng nén 5,5 GB) tại [Releases v3.0-samples](https://github.com/Renhuai123/ziwei-doushu/releases/tag/v3.0-samples).
 
 - Ngày sinh dương lịch 1924–1983, mỗi tháng lấy ngày 1–30.
-- \`hour\` là chỉ số giờ địa chi 0–11, **không phải** số giờ trên đồng hồ; \`hHH\` trong tên tệp có cùng cách hiểu.
-- \`gender\` có giá trị \`male\` hoặc \`female\`; kinh độ cố định 120° Đông.
+- `hour` là chỉ số giờ địa chi 0–11, **không phải** số giờ trên đồng hồ; `hHH` trong tên tệp có cùng cách hiểu.
+- `gender` có giá trị `male` hoặc `female`; kinh độ cố định 120° Đông.
 
-**Vấn đề đã biết:** Khoảng 2.520 bản ghi (0,49%) chứa ngày không tồn tại, như 30/2 hoặc 29/2 trong năm không nhuận. Bộ máy cũ tự điều chỉnh sang ngày 1–2/3, nên dữ liệu bị trùng. Hãy loại các bản ghi có \`month=2, day=30\` hoặc \`month=2, day=29\` ở năm không nhuận. Từ ngày 03/10/2026, bộ máy mới từ chối ngày không hợp lệ.
+**Vấn đề đã biết:** Khoảng 2.520 bản ghi (0,49%) chứa ngày không tồn tại, như 30/2 hoặc 29/2 trong năm không nhuận. Bộ máy cũ tự điều chỉnh sang ngày 1–2/3, nên dữ liệu bị trùng. Hãy loại các bản ghi có `month=2, day=30` hoặc `month=2, day=29` ở năm không nhuận. Từ ngày 03/10/2026, bộ máy mới từ chối ngày không hợp lệ.
 
 ## 7. Tư liệu lời giảng và cổ thư
 
-Thư mục [\`docs/tianji-ziwei/\`](./docs/tianji-ziwei/) lưu **1.848 đoạn trích** thuộc phần Tử Vi của *Thiên Kỷ* (14 bài và hai phần bổ sung), kèm mốc thời gian phát biểu. Nguồn ban đầu: [nihai-tianji-corpus](https://github.com/Renhuai123/nihai-tianji-corpus).
+Thư mục [`docs/tianji-ziwei/`](./docs/tianji-ziwei/) lưu **1.848 đoạn trích** thuộc phần Tử Vi của *Thiên Kỷ* (14 bài và hai phần bổ sung), kèm mốc thời gian phát biểu. Nguồn ban đầu: [nihai-tianji-corpus](https://github.com/Renhuai123/nihai-tianji-corpus).
 
 **Nguyên văn Hán tự trong cổ thư và bản ghi lời giảng được giữ lại làm dữ liệu gốc để đối chiếu**. Phần giao diện và các nội dung đã có bản dịch tiếng Việt không thay đổi khóa Hán tự của thuật toán.
 
@@ -125,10 +125,10 @@ Tham khảo danh mục 14 chính tinh và 12 cung trong [hướng dẫn Hán–V
 
 | Thành phần | Giấy phép |
 |---|---|
-| Mã nguồn (\`lib/\`, \`app/\`, \`components/\`) | [MIT](./LICENSE) |
+| Mã nguồn (`lib/`, `app/`, `components/`) | [MIT](./LICENSE) |
 | Dữ liệu mẫu (Releases) | [CC BY 4.0](./DATASET-LICENSE), được thương mại nếu ghi nguồn |
 | Cổ thư hết thời hạn bảo hộ | Phạm vi công cộng đối với nguyên tác |
-| Trích lời giảng Nghê Hải Hạ (\`docs/tianji-ziwei/\`) | [CC BY-NC-SA 4.0](./docs/tianji-ziwei/LICENSE.md), phi thương mại |
+| Trích lời giảng Nghê Hải Hạ (`docs/tianji-ziwei/`) | [CC BY-NC-SA 4.0](./docs/tianji-ziwei/LICENSE.md), phi thương mại |
 
 Đóng góp qua Pull Request. Xem [CONTRIBUTING.md](./CONTRIBUTING.md) và đặt câu hỏi tại [Discussions](https://github.com/Renhuai123/ziwei-doushu/discussions).
 
