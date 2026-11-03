@@ -10,6 +10,7 @@
 import type { ZiweiChart } from '@/lib/ziwei/types';
 import { SITE_HOST } from '@/lib/site';
 import { VI_TEXT } from '@/lib/i18n/vi';
+import { locationNameVi } from '@/lib/i18n/china-locations-vi';
 
 const BRANCH_NAMES = ['Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'];
 
@@ -102,7 +103,7 @@ export default function ShareCardCanvas({ chart, birth, highlight }: ShareCardPr
             {birth.day}/{birth.month}/{birth.year} · {birth.hour.padStart(2,'0')}:{birth.minute.padStart(2,'0')}
             <span style={{ margin: '0 4px', color: '#b8922a' }}>·</span>
             {birth.gender === 'male' ? 'Nam mệnh' : 'Nữ mệnh'}
-            {birth.city && <><span style={{ margin: '0 4px', color: '#b8922a' }}>·</span>{birth.city}</>}
+            {birth.city && <><span style={{ margin: '0 4px', color: '#b8922a' }}>·</span>{locationNameVi(birth.city)}</>}
           </div>
           <div style={{ fontSize: '8px', color: '#b8922a', letterSpacing: '0.08em', marginTop: '2px' }}>
             {SITE_HOST}
