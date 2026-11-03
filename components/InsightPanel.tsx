@@ -245,7 +245,7 @@ Gợi ý tham khảo dựa trên cấu trúc cung.`;
   // 注入四化飞化分析
   useEffect(() => {
     if (!selectedSiHua) return;
-    const key = `${starVi}-${siHuaVi}-${selectedSiHua.view}`;
+    const key = `${selectedSiHua.starName}-${selectedSiHua.siHua}-${selectedSiHua.view}`;
     if (key === lastSiHuaKey.current) return;
     lastSiHuaKey.current = key;
 
