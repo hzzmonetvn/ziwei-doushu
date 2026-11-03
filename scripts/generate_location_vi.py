@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "lib" / "ziwei" / "cities.ts"
 DEST = ROOT / "lib" / "i18n" / "china-locations-vi.ts"
 REPORT = ROOT / "lib" / "i18n" / "china-locations-coverage.vi.json"
+CURATED = ROOT / "lib" / "i18n" / "china-locations-curated.vi.json"
 UNIHAN_URL = "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip"
 HAN = re.compile(r"[\u3400-\u9fff]")
 PROVINCES = re.compile(r"^\s{4}name: '([^']+)',", flags=re.M)
@@ -238,7 +239,8 @@ def convert_one(name: str, readings: dict[str, str],
     label = re.sub(r"\s+", " ", " ".join(result)).strip()
     label = label.replace(" ( ", " (").replace(" )", ")")
     if label:
-        label = label[0].upper() + label[1:]
+        label = " ".join(word[0].upper() + word[1:] if word and word[0].isalpha()
+                         else word for word in label.split(" "))
     return label, unknown
 
 
@@ -255,6 +257,10 @@ def main(check_only: bool) -> None:
             raise ValueError("Location display labels missing: " + repr(missing[:20]))
         print(f"Location label coverage: {len(names)}/{len(names)} keys")
         return
+    # Rebuild auto readings from the maintained curated dictionary on every run.
+    # Otherwise previous automatic errors would be preserved indefinitely.
+    curated: dict[str, str] = json.loads(CURATED.read_text(encoding="utf-8"))
+    labels = {name: curated[name] for name in names if name in curated}
     readings, variants = retrieve_unihan()
     unknowns: Counter[str] = Counter()
     auto_count = 0
