@@ -89,12 +89,22 @@
         "Chú giải khảo cứu Việt hóa": 63,
         "Nhãn chủ đề chuẩn hóa": 3175
       }
+    },
+    {
+      "phase": "Aligned glossary correction",
+      "quote_records_modified": 1,
+      "terminology_replacements": {
+        "Chú giải Hán tự ngoài JSONL": 78,
+        "Chữ Lạc (Hán–Việt)": 1
+      }
     }
   ],
-  "record_edit_events": 2876,
+  "record_edit_events": 2877,
   "terminology_replacements_all_rounds": {
     "Bắc Đẩu": 163,
+    "Chú giải Hán tự ngoài JSONL": 78,
     "Chú giải khảo cứu Việt hóa": 63,
+    "Chữ Lạc (Hán–Việt)": 1,
     "Cung": 754,
     "Cung Mệnh": 23,
     "Cung Phúc Đức": 24,
