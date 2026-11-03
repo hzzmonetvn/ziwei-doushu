@@ -1,0 +1,20 @@
+{
+  "method": "Aligned Chinese-source-gated glossary corrections",
+  "source_records": 1848,
+  "chapter_count": 16,
+  "quote_records_modified": 619,
+  "terminology_replacements": {
+    "Cung": 740,
+    "Liêm Trinh": 4,
+    "Phúc Đức": 17,
+    "Tham Lang": 80,
+    "Thất Sát": 5,
+    "Tứ Hóa": 47,
+    "Tử Vi": 155,
+    "cung Mệnh": 28,
+    "Điền Trạch": 37,
+    "Đại hạn": 2
+  },
+  "original_source_modified": false,
+  "quality": "Machine translated; specialist human review still required"
+}
