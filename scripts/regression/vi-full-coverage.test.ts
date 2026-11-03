@@ -4,7 +4,7 @@ import path from 'node:path';
 import { PROVINCES } from '../../lib/ziwei/cities';
 import { VI_LOCATION_NAMES } from '../../lib/i18n/china-locations-vi';
 
-const root = path.resolve(import.meta.dirname, '../..');
+const root = process.cwd();
 const docs = path.join(root, 'docs/tianji-ziwei');
 const han = /[\u3400-\u9fff]/;
 const readLines = (filename: string): Record<string, unknown>[] =>
