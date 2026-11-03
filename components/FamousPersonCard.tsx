@@ -10,6 +10,11 @@ const CATEGORY_COLORS: Record<string, string> = {
   '历史': '#facc15',
 };
 
+const CATEGORY_LABELS: Record<string,string> = {
+  '商业': 'Doanh nhân', '文艺': 'Văn học – nghệ thuật',
+  '科技': 'Công nghệ', '体育': 'Thể thao', '历史': 'Lịch sử',
+};
+
 export default function FamousPersonCard({ person }: { person: FamousPerson }) {
   const catColor = CATEGORY_COLORS[person.category] ?? '#d4a843';
   return (
@@ -28,7 +33,7 @@ export default function FamousPersonCard({ person }: { person: FamousPerson }) {
         Lá số danh nhân
         <span className="text-[9px] px-2 py-0.5 rounded-full ml-auto"
           style={{ color: catColor, background: catColor + '18', border: `1px solid ${catColor}40` }}>
-          {person.category}
+          {CATEGORY_LABELS[person.category] ?? person.category}
         </span>
       </div>
 
