@@ -23,6 +23,7 @@ DOCS = ROOT / "docs" / "tianji-ziwei"
 SOURCE = DOCS / "entries.jsonl"
 BILINGUAL = DOCS / "entries.vi.jsonl"
 REPORT = DOCS / "refinement-report.vi.json"
+TOPIC_GLOSSARY = json.loads((DOCS / "taxonomy-glossary.vi.json").read_text(encoding="utf-8"))
 PARTS = {
     3: "2上", 5: "3上", 7: "4上", 9: "5上", 11: "6上",
     13: "7上", 15: "8上", 17: "9上", 19: "10上",
@@ -98,6 +99,15 @@ def read_jsonl(path: Path) -> list[dict]:
 def apply_rules(source: str, translation: str, counts: Counter) -> str:
     if not source or not translation:
         return translation
+    # Translate complete source-aligned taxonomy segments, never guess words
+    # from partial machine output. All 241 corpus segments are curated.
+    segments = source.split(" · ")
+    if segments and all(part.strip() in TOPIC_GLOSSARY for part in segments):
+        expected = " · ".join(TOPIC_GLOSSARY[part.strip()] for part in segments)
+        if expected != translation:
+            counts["Nhãn chủ đề chuẩn hóa"] += 1
+        return expected
+
     updated = translation
     for evidence, pattern, replacement, label in COMPILED:
         if evidence not in source:
@@ -168,6 +178,22 @@ def update_markdown(stem: str, part: int, old_rows: list[dict], new_rows: list[d
                 if old_tag not in line:
                     raise ValueError(f"Cannot safely locate taxonomy at {stem} #{i}")
                 line = line.replace(old_tag, new_tag, 1)
+            # Move the original research annotation into the comparison block,
+            # and display the Vietnamese note beside the translated quotation.
+            source_note = str(row_old.get("note") or "")
+            note_vi = str(row_new.get("note_vi") or "")
+            if source_note and note_vi:
+                raw = "〔" + source_note + "〕"
+                if raw in line:
+                    line = line.replace(raw, "〔Chú giải: " + html.escape(note_vi) + "〕", 1)
+                    # Keep original annotation next to the original quotation.
+                    # index+5 is the blank line immediately after the source quote.
+                    if index + 5 >= len(lines) or "「" not in lines[index + 4]:
+                        raise ValueError(f"Unexpected source quote structure at {stem} #{i}")
+                    original_annotation = "  > 〔" + html.escape(source_note) + "〕"
+                    if original_annotation not in "".join(lines[index:index+8]):
+                        lines[index + 5] = original_annotation + "\n" + lines[index + 5]
+                    counts["Chú giải khảo cứu Việt hóa"] += 1
             lines[index] = line
     if i != len(new_rows):
         raise ValueError(f"Chapter {stem} only contains {i}/{len(new_rows)} excerpts")
