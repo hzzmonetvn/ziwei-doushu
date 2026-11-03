@@ -57,6 +57,8 @@ for (const [id, stem] of Object.entries(parts)) {
   const sourceControls = text.match(/<summary>Nguyên văn Hán tự \(mở để đối chiếu\)<\/summary>/g) ?? [];
   assert.equal(sourceControls.length, countByPart.get(Number(id)), 'Original comparison blocks mismatch at ' + stem);
   assert.ok(text.includes('Bản dịch máy'), 'Machine translation label missing at ' + stem);
+  const readerText = text.replace(/<details>[\s\S]*?<\/details>/g, '');
+  assert.ok(!han.test(readerText), 'Untranslated Han characters visible outside original-source details: ' + stem);
 }
 
 const report = JSON.parse(fs.readFileSync(path.join(docs, 'translation-report.vi.json'), 'utf8'));
