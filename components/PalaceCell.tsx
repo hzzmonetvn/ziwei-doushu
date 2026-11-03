@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import { VI_TEXT } from '@/lib/i18n/vi';
 import type { Palace, Star } from '@/lib/ziwei/types';
 import { STEMS, BRANCHES } from '@/lib/ziwei/constants';
 import clsx from 'clsx';
@@ -113,10 +114,10 @@ export default function PalaceCell({
           {name}
         </span>
         {isMingGong && (
-          <span className="text-[7px] text-amber-500/80 border border-amber-500/30 px-0.5 rounded leading-tight">命</span>
+          <span className="text-[7px] text-amber-500/80 border border-amber-500/30 px-0.5 rounded leading-tight">Mệnh</span>
         )}
         {isShenGong && (
-          <span className="text-[7px] text-sky-500/80 border border-sky-500/30 px-0.5 rounded leading-tight">身</span>
+          <span className="text-[7px] text-sky-500/80 border border-sky-500/30 px-0.5 rounded leading-tight">Thân</span>
         )}
       </div>
 
@@ -126,7 +127,7 @@ export default function PalaceCell({
       {/* 主星 */}
       <div className="flex flex-col gap-0.5 flex-1">
         {majorStars.length === 0 && (
-          <span className="text-[10px] italic" style={{ color: 'var(--t-faint)', opacity: 0.6 }}>空宫</span>
+          <span className="text-[10px] italic" style={{ color: 'var(--t-faint)', opacity: 0.6 }}>Vô chính diệu</span>
         )}
         {majorStars.map((star) => {
           const overlaySiHua = overlayStarSiHua?.[star.name];
@@ -165,8 +166,8 @@ export default function PalaceCell({
           {luckyStars.map(s => {
             const overlaySiHua = overlayStarSiHua?.[s.name];
             return (
-              <span key={s.name} className="inline-flex items-center text-[9px] text-sky-500/70 leading-tight">
-                {s.name}
+              <span key={VI_TEXT[s.name] ?? s.name} className="inline-flex items-center text-[9px] text-sky-500/70 leading-tight">
+                {VI_TEXT[s.name] ?? s.name}
                 {s.siHua && <SiHuaBadge siHua={s.siHua} />}
                 {overlaySiHua && (
                   <SiHuaBadge
@@ -189,8 +190,8 @@ export default function PalaceCell({
       {shaStars.length > 0 && (
         <div className="flex flex-wrap gap-x-1">
           {shaStars.map(s => (
-            <span key={s.name} className="text-[9px] text-red-500/60 leading-tight">
-              {s.name}{s.siHua && <SiHuaBadge siHua={s.siHua} />}
+            <span key={VI_TEXT[s.name] ?? s.name} className="text-[9px] text-red-500/60 leading-tight">
+              {VI_TEXT[s.name] ?? s.name}{s.siHua && <SiHuaBadge siHua={s.siHua} />}
             </span>
           ))}
         </div>
