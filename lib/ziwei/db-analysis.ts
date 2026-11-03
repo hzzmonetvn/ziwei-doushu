@@ -32,19 +32,19 @@ export const TOPIC_PALACE_NAME: Record<TopicKey, string> = {
 };
 
 export const TOPIC_LABEL: Record<TopicKey, string> = {
-  overview:    '命格总览',
-  personality: '性格特质',
-  love:        '感情婚姻',
-  career:      '事业职业',
-  wealth:      '财富运势',
-  health:      '健康状况',
-  family:      '兄弟合伙',
-  children:    '子女缘分',
-  move:        '迁移外出',
-  friends:     '人际贵人',
-  home:        '田宅不动产',
-  spirit:      '精神福德',
-  parents:     '父母长辈',
+  overview:    'Tổng quan mệnh cách',
+  personality: 'Đặc điểm tính cách',
+  love:        'Tình duyên và hôn nhân',
+  career:      'Công danh, sự nghiệp',
+  wealth:      'Tài vận',
+  health:      'Sức khỏe',
+  family:      'Huynh đệ và đối tác',
+  children:    'Tử tức',
+  move:        'Thiên Di',
+  friends:     'Quý nhân và quan hệ xã hội',
+  home:        'Điền trạch',
+  spirit:      'Phúc Đức',
+  parents:     'Phụ Mẫu',
 };
 
 /**
