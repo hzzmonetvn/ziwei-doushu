@@ -55,6 +55,11 @@ export interface NiChapter {
 
 /** 易经六十四卦 */
 export interface Hexagram {
+  nameVi?: string;
+  compositionVi?: string;
+  meaningVi?: string;
+  niInterpretationVi?: string;
+  divinationVi?: string;
   number: number;
   name: string;
   /** 卦象描述 如「天泽履」 */
