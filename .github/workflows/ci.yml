@@ -27,3 +27,6 @@ jobs:
 
       - name: Kiểm thử hồi quy bộ máy an sao
         run: npm test
+
+      - name: Kiểm tra Next.js production build
+        run: npm run build
