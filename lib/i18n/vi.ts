@@ -655,7 +655,18 @@ export const VI_TEXT: Record<string, string> = {
   "《紫微斗数全书·三奇加会》": "Tử Vi Đẩu Số Toàn Thư · Tam Kỳ gia hội",
   "《紫微斗数骨髓赋·羊陀夹忌》": "Cốt Tủy Phú · Kình Đà giáp Kỵ",
   "《紫微斗数骨髓赋·马头带箭》": "Cốt Tủy Phú · Mã Đầu Đới Tiễn",
-  "《紫微斗数全书·四化论》": "Tử Vi Đẩu Số Toàn Thư · Luận Tứ Hóa"
+  "《紫微斗数全书·四化论》": "Tử Vi Đẩu Số Toàn Thư · Luận Tứ Hóa",
+  "迁": "Thiên Di",
+  "身": "Thân",
+  "《紫微斗数全书·禄存星》": "Tử Vi Đẩu Số Toàn Thư · Sao Lộc Tồn",
+  "《紫微斗数全书·天马星》": "Tử Vi Đẩu Số Toàn Thư · Sao Thiên Mã",
+  "文昌、文曲同会命宫三方四正": "Văn Xương, Văn Khúc cùng hội Tam phương tứ chính cung Mệnh",
+  "《紫微斗数全书·文星论》": "Tử Vi Đẩu Số Toàn Thư · Luận Văn tinh",
+  "左辅、右弼同会命宫三方四正": "Tả Phụ, Hữu Bật cùng hội Tam phương tứ chính cung Mệnh",
+  "《紫微斗数全书·辅弼论》": "Tử Vi Đẩu Số Toàn Thư · Luận Phụ Bật",
+  "天魁、天钺同会命宫三方四正": "Thiên Khôi, Thiên Việt cùng hội Tam phương tứ chính cung Mệnh",
+  "《紫微斗数全书·魁钺论》": "Tử Vi Đẩu Số Toàn Thư · Luận Khôi Việt",
+  "化科、化权同会命宫三方四正": "Hóa Khoa, Hóa Quyền cùng hội Tam phương tứ chính cung Mệnh"
 };
 
 const HAN = /[\u3400-\u9FFF]/g;
