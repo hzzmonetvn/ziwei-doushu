@@ -220,7 +220,7 @@ def get_cached_headings(stem: str, original_lines: list[str]) -> dict[str, str]:
     path = CHAPTERS / (stem + ".md")
     if not path.exists():
         return {}
-    heading_re = re.compile(r"^##\\s*§\\d+\\s+[0-9:]+\\s+(.*)$")
+    heading_re = re.compile(r"^##\s*§\d+\s+[0-9:]+\s+(.*)$")
     old = [m.group(1) for line in original_lines if (m := heading_re.match(line))]
     new = [m.group(1) for line in path.read_text(encoding="utf-8").splitlines()
            if (m := heading_re.match(line))]
@@ -331,7 +331,7 @@ def translate_corpus() -> None:
             elif line.startswith("## "):
                 match = re.match(r"^(##\s*§\d+\s+[0-9:]+\s+)(.*)$", line)
                 if match:
-                    out_lines.append(match.group(1) + heading_cache.get(match.group(2), translate_one(match.group(2)) if match.group(2) not in heading_cache else heading_cache[match.group(2)]))
+                    out_lines.append(match.group(1) + (heading_cache[match.group(2)] if match.group(2) in heading_cache else translate_one(match.group(2))))
                 else:
                     out_lines.append(line)
             elif not line.strip():
