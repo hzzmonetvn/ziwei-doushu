@@ -49,7 +49,7 @@ const SiHuaBadge = ({
       onClick={onClick}
     >
       {overlay && label && <span className="mr-px opacity-70">{label}</span>}
-      {siHua}
+      {VI_TEXT[siHua] ?? siHua}
     </span>
   );
 };
@@ -59,7 +59,7 @@ export default function PalaceCell({
   overlayStarSiHua, overlayLabel, onSiHuaClick,
 }: PalaceCellProps) {
   const { branch, stem, name, stars, daXianAge, isCurrentDaXian, isMingGong, isShenGong } = palace;
-  const ganzhi = `${STEMS[stem]}${BRANCHES[branch]}`;
+  const ganzhi = `${VI_TEXT[STEMS[stem]] ?? STEMS[stem]} ${VI_TEXT[BRANCHES[branch]] ?? BRANCHES[branch]}`;
 
   const majorStars = stars.filter(s => s.type === 'major');
   const luckyStars = stars.filter(s => s.type === 'lucky');
@@ -111,7 +111,7 @@ export default function PalaceCell({
         )}
           style={!isMingGong && !isShenGong ? { color: 'var(--t-faint)' } : undefined}
         >
-          {name}
+          {VI_TEXT[name] ?? name}
         </span>
         {isMingGong && (
           <span className="text-[7px] text-amber-500/80 border border-amber-500/30 px-0.5 rounded leading-tight">Mệnh</span>
@@ -141,7 +141,7 @@ export default function PalaceCell({
                 'text-[13px] leading-tight font-bold tracking-tight cursor-pointer hover:brightness-125 transition-all',
                 star.brightness === 'bright' ? 'text-amber-300' : star.brightness === 'dim' ? 'text-amber-700/80' : 'text-amber-500',
               )}>
-                {star.name}
+                {VI_TEXT[star.name] ?? star.name}
               </span>
               {star.siHua && <SiHuaBadge siHua={star.siHua} />}
               {overlaySiHua && (

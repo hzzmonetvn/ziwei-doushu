@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ZiweiChart, Palace } from '@/lib/ziwei/types';
 import type { TimeView } from './TimeNav';
+import { VI_TEXT } from '@/lib/i18n/vi';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -37,7 +38,7 @@ const TOPIC_PROMPTS: Record<string, string> = {
 **【命格定性】**
 Tóm tắt cách cục chủ đạo và khí chất mệnh chủ trong một câu.
 
-**【主星解读】**
+**Luận giải chính tinh**
 Phân tích đặc điểm chính tinh thủ Mệnh theo các quan điểm được ghi nhận trong hệ thống Nghê Hải Hạ; không tạo trích dẫn giả.
 
 **【三方四正】**
@@ -63,7 +64,7 @@ Phối hợp những cung liên quan đến tình cảm.
 **【当前大限感情运】**
 Phân tích diễn biến tình cảm trong Đại hạn mười năm hiện tại.
 
-**【实际建议】**
+**Gợi ý ứng dụng thực tế**
 Đưa ra gợi ý ứng xử thực tế.`,
 
   career: `Hãy luận giải vận công danh, sự nghiệp bằng tiếng Việt theo bố cục sau:
@@ -219,19 +220,20 @@ export default function InsightPanel({ chart, selectedPalace, selectedSiHua }: I
 
     const majorStars = selectedPalace.stars.filter(s => s.type === 'major');
     const starDesc = majorStars.length > 0
-      ? majorStars.map(s => `${s.name}${s.siHua ? ' Hóa ' + s.siHua : ''}`).join('、')
+      ? majorStars.map(s => `${VI_TEXT[s.name] ?? s.name}${s.siHua ? ' Hóa ' + (VI_TEXT[s.siHua] ?? s.siHua) : ''}`).join(', ')
       : 'Vô chính diệu (mượn Đối cung)';
     const role = PALACE_ROLES[selectedPalace.name] ?? '';
+    const palaceVi = VI_TEXT[selectedPalace.name] ?? selectedPalace.name;
 
-    const prompt = `Hãy luận giải bằng tiếng Việt về cung 【${selectedPalace.name}】 (chủ về ${role}), chính tinh ${starDesc}, theo bố cục:
+    const prompt = `Hãy luận giải bằng tiếng Việt về cung 【${palaceVi}】 (chủ về ${role}), chính tinh ${starDesc}, theo bố cục:
 
-**【宫位定性】**
-Ý nghĩa của ${selectedPalace.name} và tổ hợp tinh diệu tại cung này.
+**Đặc điểm cung**
+Ý nghĩa của ${palaceVi} và tổ hợp tinh diệu tại cung này.
 
 **【主星解读】**
 Luận chính tinh theo hệ thống Nghê Hải Hạ, chỉ dẫn các quan điểm có căn cứ.
 
-**【三方四正联动】**
+**Tác động của Tam phương tứ chính**
 Ảnh hưởng của Tam phương tứ chính đối với cung này.
 
 **【实际建议】**
@@ -243,7 +245,7 @@ Gợi ý tham khảo dựa trên cấu trúc cung.`;
   // 注入四化飞化分析
   useEffect(() => {
     if (!selectedSiHua) return;
-    const key = `${selectedSiHua.starName}-${selectedSiHua.siHua}-${selectedSiHua.view}`;
+    const key = `${starVi}-${siHuaVi}-${selectedSiHua.view}`;
     if (key === lastSiHuaKey.current) return;
     lastSiHuaKey.current = key;
 
@@ -253,20 +255,23 @@ Gợi ý tham khảo dựa trên cấu trúc cung.`;
     );
     const palaceName = palaceOfStar?.name ?? 'Chưa rõ cung';
     const viewLabel = selectedSiHua.view === 'daxian' ? 'Đại hạn' : 'Lưu niên';
+    const starVi = VI_TEXT[selectedSiHua.starName] ?? selectedSiHua.starName;
+    const siHuaVi = VI_TEXT[selectedSiHua.siHua] ?? selectedSiHua.siHua;
+    const palaceVi = VI_TEXT[palaceName] ?? palaceName;
 
-    const prompt = `Hãy luận bằng tiếng Việt ảnh hưởng Phi Hóa của 【${viewLabel} ${selectedSiHua.starName} Hóa ${selectedSiHua.siHua}】 theo bố cục:
+    const prompt = `Hãy luận bằng tiếng Việt ảnh hưởng Phi Hóa của 【${viewLabel} ${starVi} Hóa ${siHuaVi}】 theo bố cục:
 
-**【化${selectedSiHua.siHua}基本含义】**
-Ý nghĩa Hóa ${selectedSiHua.siHua} trong hệ thống Nghê Hải Hạ và trường hợp ${selectedSiHua.starName} Hóa ${selectedSiHua.siHua}.
+**Ý nghĩa Hóa ${siHuaVi}**
+Ý nghĩa Hóa ${siHuaVi} trong hệ thống Nghê Hải Hạ và trường hợp ${starVi} Hóa ${siHuaVi}.
 
-**【落宫影响】**
-${selectedSiHua.starName} Hóa ${selectedSiHua.siHua} đóng tại 【${palaceName}】, luận sự ảnh hưởng đến lĩnh vực cung này theo Nghê Hải Hạ.
+**Ảnh hưởng tại cung đóng**
+${starVi} Hóa ${siHuaVi} đóng tại 【${palaceVi}】, luận sự ảnh hưởng đến lĩnh vực cung này theo Nghê Hải Hạ.
 
-**【三方四正飞化路径】**
-Ảnh hưởng của Hóa ${selectedSiHua.siHua} nhập ${palaceName} lên Tam phương tứ chính (Đối cung và hai cung tam hợp).
+**Đường tác động qua Tam phương tứ chính**
+Ảnh hưởng của Hóa ${siHuaVi} nhập ${palaceVi} lên Tam phương tứ chính (Đối cung và hai cung tam hợp).
 
-**【当前运势影响】**
-Đối chiếu Hóa ${selectedSiHua.siHua} trong thời kỳ ${viewLabel} đối với vận hạn gần đây.
+**Ảnh hưởng trong thời kỳ đang xét**
+Đối chiếu Hóa ${siHuaVi} trong thời kỳ ${viewLabel} đối với vận hạn gần đây.
 
 **【实际建议】**
 Gợi ý ứng xử cụ thể trên cơ sở Tứ Hóa.`;
