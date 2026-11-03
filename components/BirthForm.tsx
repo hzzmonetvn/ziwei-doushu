@@ -30,7 +30,7 @@ interface BirthFormProps {
   hideSubmit?: boolean;
 }
 
-const SHICHEN_NAMES = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+const SHICHEN_NAMES = ['Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'];
 
 /** 检查日期是否合法 */
 function isValidDate(y: number, m: number, d: number): boolean {
@@ -114,7 +114,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
     ? [
         `Ngày ${d}/${m}/${y}`,
         form.city || (form.province ? form.province : ''),
-        form.unknownTime ? 'Chưa rõ giờ sinh' : `${SHICHEN_NAMES[branch]}时`,
+        form.unknownTime ? 'Chưa rõ giờ sinh' : `giờ ${SHICHEN_NAMES[branch]}`,
         form.gender === 'male' ? 'Nam' : 'Nữ',
       ].filter(Boolean).join(' · ')
     : '';
@@ -331,7 +331,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
               exit={{ opacity: 0 }}
               style={{ fontSize: '10px', color: isDark ? 'rgba(165,185,210,0.7)' : 'rgba(140,100,20,0.45)', marginTop: '5px' }}
             >
-              * 倪海厦批命用真太阳时，建议填写出生地以自动校正时辰
+              * Theo phương pháp Nghê Hải Hạ, nên nhập nơi sinh để hiệu chỉnh giờ mặt trời thực.
             </motion.p>
           )}
         </AnimatePresence>
@@ -365,7 +365,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
           <div style={{ textAlign: 'center', padding: '4px 0' }}>
             <span style={{ fontSize: '10px', color: isDark ? 'rgba(170,195,220,0.75)' : 'rgba(140,100,20,0.5)' }}>Giờ mặt trời thực → </span>
             <span style={{ fontSize: '15px', color: goldText, fontWeight: 600, letterSpacing: '0.08em' }}>
-              {SHICHEN_NAMES[branch]}时
+              giờ {SHICHEN_NAMES[branch]}
             </span>
             {shichenInfo && (
               <span style={{ fontSize: '10px', color: isDark ? 'rgba(170,195,220,0.75)' : 'rgba(140,100,20,0.5)', marginLeft: '4px' }}>
