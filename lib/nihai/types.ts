@@ -98,6 +98,10 @@ export interface MedicalEntry {
 
 /** 针灸经验穴位 */
 export interface AcuExperience {
+  /** Diễn giải tiếng Việt; dữ liệu gốc giữ nguyên để đối chiếu. */
+  conditionVi?: string;
+  acupointsVi?: string;
+  categoryVi?: string;
   id: number;
   /** 适应症/疾病 */
   condition: string;
